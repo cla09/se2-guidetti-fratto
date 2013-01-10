@@ -6,7 +6,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("Si")
+@DiscriminatorValue("admin")
 public class Admin extends Profilo implements Serializable{
 
 	private static final long serialVersionUID = 1L;

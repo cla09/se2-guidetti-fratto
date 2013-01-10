@@ -7,7 +7,7 @@ import java.util.Set;
 import javax.persistence.*;
 
 @Entity
-@DiscriminatorValue("No")
+@DiscriminatorValue("user")
 public class User extends Profilo implements Serializable{
 
 	private static final long serialVersionUID = 1L;

@@ -7,7 +7,7 @@ import commons.EnumSesso;
 
 
 @Entity
-@DiscriminatorColumn(name = "flag_admin", discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorColumn(name = "ruolo", discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorValue("X")
 @Table(name = "profilo")
 public abstract class Profilo implements Serializable{
