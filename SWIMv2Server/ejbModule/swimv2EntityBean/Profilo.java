@@ -19,7 +19,7 @@ public abstract class Profilo implements Serializable{
 	@Column(name = "nickname")
 	private String nickname;
 	
-	@Column(name = "password")
+	@Column(name = "pwd")
 	private String password;
 	
 	@Column(name = "email")
