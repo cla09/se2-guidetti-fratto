@@ -28,7 +28,7 @@ public class GestorePropostaAbilita implements GestorePropostaAbilitaRemote {
 	}
 
 	@Override
-	public boolean inviaProposta(String nickUserProponente,	String nomeAbilitaProposta, String descrizioneAbilitaProposta){
+	public void inviaProposta(String nickUserProponente,	String nomeAbilitaProposta, String descrizioneAbilitaProposta){
 
 		PropostaAbilita propostaAbilita = new PropostaAbilita();
 
@@ -42,17 +42,7 @@ public class GestorePropostaAbilita implements GestorePropostaAbilitaRemote {
 
 		propostaAbilita.setUserProponenteAbilita(userProponente);
 
-		/*
-		 * stampa per vedificare se la proposta creata da aggiungere è corretta
-    	System.out.println("\n"+nomeAbilitaProposta+"\n"+descrizioneAbilitaProposta+"\n"+nickUserProponente+"\n"+propostaAbilita.getStatoPropostaAbilita());
-		 *
-		 */
-
 		gestoreDB.persist(propostaAbilita);
-
-		return true;
-
-
 	}
 
 
@@ -87,32 +77,25 @@ public class GestorePropostaAbilita implements GestorePropostaAbilitaRemote {
 	}
 
 	@Override
-	public boolean visionaProposta(int idProposta){
+	public void visionaProposta(int idProposta){
 
 		PropostaAbilita propostaAbilitaDaModificare;
-
 		propostaAbilitaDaModificare = gestoreDB.find(PropostaAbilita.class, idProposta);
-
 		propostaAbilitaDaModificare.setStatoPropostaAbilita("visionata");
 
 		gestoreDB.merge(propostaAbilitaDaModificare);
-
-		return true;
-
+		
 	}
 
 	
 	@Override
-	public boolean cancellaProposta(int idProposta) {
+	public void cancellaProposta(int idProposta) {
 
 		PropostaAbilita propostaDaEliminare;
-
 		propostaDaEliminare = gestoreDB.find(PropostaAbilita.class,	idProposta);
-
 
 		gestoreDB.remove(propostaDaEliminare);
 
-		return true;
 	}
 
 
