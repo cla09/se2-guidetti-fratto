@@ -39,7 +39,7 @@ public class GestorePropostaAbilita implements GestorePropostaAbilitaRemote {
     	propostaAbilita.setDefaultStatoProposta();
 
     	//recupero lo user che ha proposto la nuova abilita
-    	User userProponente = getUserProponente(nickUserProponente);
+    	User userProponente = gestoreDB.find(User.class, nickUserProponente);
 
     	propostaAbilita.setUserProponenteAbilita(userProponente);
     	
@@ -60,44 +60,77 @@ public class GestorePropostaAbilita implements GestorePropostaAbilitaRemote {
     		throw new DBException();
 		}
 	}
-
+    
+    	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<PropostaAbilita> recuperaProposteAbilita() {
+	public List<PropostaAbilita> recuperaProposteAbilitaNonVisionate() {
 		
 		List<PropostaAbilita> proposteAbilitaRecuperate;
 
-		Query q = gestoreDB.createQuery("SELECT p FROM PropostaAbilita p");
+		Query q = gestoreDB.createQuery("SELECT p FROM PropostaAbilita p WHERE p.statoProposta = :stato");
+		q.setParameter("stato", "nonVisionata");
 		proposteAbilitaRecuperate = (List<PropostaAbilita>) q.getResultList(); 
-		
-		/*
-		 * Stampa di prova per verificare che il metodo recupera tutte le proposte presenti nel db
-		 * 
-		 * for (PropostaAbilita p: proposteAbilitarecuperate){
-				if(p.getStatoPropostaAbilita().equals("nonVisionata")){
-					System.out.println("userProponente: "+ p.getUserProponenteAbilita().getNickname()+ 
-						"nome abilita proposta: "+ p.getNomePropostaAbilita());
-				}
-			}
-		 */
 		
 		return proposteAbilitaRecuperate;
 
 	}
 
-	/*
-	 * questo metodo serve per recuperare un oggetto user dal suo nickname
-	 */
-	private User getUserProponente(String nickname){
-		Query q = gestoreDB.createQuery("SELECT u FROM User u WHERE u.nickname = :nickname");  //:nickname è un parametro
-		q.setParameter("nickname", nickname);
-		
-		Object risultatoQuery;
-		
-		risultatoQuery = q.getSingleResult();
-		
-		return (User)risultatoQuery;
 	
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<PropostaAbilita> recuperaProposteAbilitaVisionate() {
+
+		List<PropostaAbilita> proposteAbilitaRecuperate;
+
+		Query q = gestoreDB.createQuery("SELECT p FROM PropostaAbilita p WHERE p.statoProposta = :stato");
+		q.setParameter("stato", "visionata");
+		proposteAbilitaRecuperate = (List<PropostaAbilita>) q.getResultList(); 
+		
+		return proposteAbilitaRecuperate;
+
+	}
+
+	@Override
+	public boolean visionaProposta(int idProposta) throws DBException {
+		
+		PropostaAbilita propostaAbilitaDaModificare;
+		
+		propostaAbilitaDaModificare = gestoreDB.find(PropostaAbilita.class, idProposta);
+		
+				
+		try{
+    		gestoreDB.merge(propostaAbilitaDaModificare);
+    		gestoreDB.flush();
+
+    		return true;
+    	}
+    	catch(Exception e){
+    		throw new DBException();
+		}
+			
+		
+	}
+
+	@Override
+	public boolean cancellaProposta(int idProposta) throws DBException {
+		
+		PropostaAbilita propostaDaEliminare;
+		
+		propostaDaEliminare = gestoreDB.find(PropostaAbilita.class,	idProposta);
+		
+		try{
+    		gestoreDB.remove(propostaDaEliminare);
+    		gestoreDB.flush();
+
+    		return true;
+    	}
+    	catch(Exception e){
+    		throw new DBException();
+		}
+
+		
 	}
     
 

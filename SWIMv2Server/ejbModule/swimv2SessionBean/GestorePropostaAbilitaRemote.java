@@ -12,6 +12,13 @@ public interface GestorePropostaAbilitaRemote {
 	
 	boolean inviaProposta(String nickUserProponente, String nomeAbilitaProposta, String descrizioneAbilitaProposta) throws DBException;
 	
-	List<PropostaAbilita> recuperaProposteAbilita();	
+	List<PropostaAbilita> recuperaProposteAbilitaNonVisionate();
+	
+	List<PropostaAbilita> recuperaProposteAbilitaVisionate();
+	
+	boolean visionaProposta(int idProposta) throws DBException;
+	
+	boolean cancellaProposta(int idProposta) throws DBException;
+	
 
 }
