@@ -13,7 +13,7 @@
     <description></description>
     <display-name>TestSingoliMetodiGestorePropostaAbilitaServlet</display-name>
     <servlet-name>TestSingoliMetodiGestorePropostaAbilitaServlet</servlet-name>
-    <servlet-class>swimv2ServletController.TestSingoliMetodiGestorePropostaAbilitaServlet</servlet-class>
+    <servlet-class>servlet.TestSingoliMetodiGestorePropostaAbilitaServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>TestSingoliMetodiGestorePropostaAbilitaServlet</servlet-name>
