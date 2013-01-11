@@ -37,7 +37,7 @@ create table abilita (
 
 #tabella data
 create table data_completa (
-	timestamp datetime primary key, #timestamp
+	timestamp bigint primary key, #timestamp
 	anno smallint(4) not null,
 	mese smallint(2) unsigned not null,
 	giorno smallint(2) unsigned not null,
@@ -81,8 +81,8 @@ create table amicizia (
 	codice int unsigned auto_increment primary key,
 	user_richiedente varchar(20) not null,
 	user_destinatario varchar(20) not null,
-	momento_richiesta datetime not null,
-	momento_accettazione datetime,
+	momento_richiesta bigint not null,
+	momento_accettazione bigint,
 	#se elimino (aggiorno) lo user richiedente allora tutte le sue richieste di amicizia devono essere eliminate(aggiornate)
 	foreign key(user_richiedente) references profilo(nickname)
 		on delete cascade
@@ -108,8 +108,8 @@ create table aiuto (
 	user_richiedente varchar(20) not null,
 	user_destinatario varchar(20) not null,
 	codice_abilita int unsigned not null,
-	momento_richiesta datetime not null,
-	momento_accettazione datetime,
+	momento_richiesta bigint not null,
+	momento_accettazione bigint,
 	#se elimino (aggiorno) lo user richiedente allora tutte le sue richieste di aiuto devono essere eliminate(aggiornate)
 	foreign key(user_richiedente) references profilo(nickname)
 		on delete cascade
@@ -137,7 +137,7 @@ create table feedback (
 	codice_aiuto int unsigned auto_increment primary key,
 	valutazione_numerica smallint(1) not null,
 	valutazione_estesa varchar(140) not null,
-	momento_rilascio datetime not null,
+	momento_rilascio bigint not null,
 	#se elimino (aggiorno) l'aiuto allora elimino (aggiorno) anche il feedback ad esso associato
 	foreign key(codice_aiuto) references aiuto(codice)
 		on delete cascade

@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import session.GestoreAmiciziaRemote;
-import session.GestorePropostaAbilitaRemote;
 
 /**
  * Servlet implementation class TestSingoliMetodiGestoreAmicizia
@@ -35,7 +34,7 @@ public class TestSingoliMetodiGestoreAmicizia extends HttpServlet {
 		try {
 			Context ctx = getInitialContext();
 
-			GestoreAmiciziaRemote gestorePropostaAbilitaRemoto = (GestoreAmiciziaRemote) ctx.lookup("GestoreAmiciziaJNDI");
+			GestoreAmiciziaRemote gestoreAmiciziaRemoto = (GestoreAmiciziaRemote) ctx.lookup("GestoreAmiciziaJNDI");
 
 			System.out.println("****** sono nella servlet--- collegamento stabilito **********");
 

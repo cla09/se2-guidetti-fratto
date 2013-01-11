@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.GregorianCalendar;
 import java.util.Hashtable;
 
 import javax.naming.Context;
@@ -10,7 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import session.GestoreAmiciziaRemote;
+import entity.Data;
+
+import session.GestoreAbilitaRemote;
 import session.GestoreDataRemote;
 
 /**
@@ -27,18 +30,34 @@ public class TestSingoliMetodiGestoreData extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-    /**
+	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		try {
 			Context ctx = getInitialContext();
 
-			GestoreDataRemote gestorePropostaAbilitaRemoto = (GestoreDataRemote) ctx.lookup("GestoreDataJNDI");
+			GestoreDataRemote gestoreDataRemoto = (GestoreDataRemote) ctx.lookup("GestoreDataJNDI");
 
 			System.out.println("****** sono nella servlet--- collegamento stabilito **********");
-
+			
+			GregorianCalendar c = gestoreDataRemoto.generaTimestamp();
+			long a = c.getTimeInMillis();
+			System.out.println("*** milli: "+ a);
+			
+			if(gestoreDataRemoto.controllaEsistenzaTimestamp(a)){
+				System.out.println("********c'è******");
+			}
+			else{
+				System.out.println("********non c'è******");
+			}
+			
+			System.out.println("\n\n####### creo una data #####");
+			Data d = gestoreDataRemoto.creaData();
+			
+			System.out.println("timestamp: "+ d.getTimestamp());
+			
 
 		}
 		catch (Exception e) {

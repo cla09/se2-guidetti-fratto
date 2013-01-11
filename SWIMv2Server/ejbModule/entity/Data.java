@@ -1,6 +1,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.GregorianCalendar;
 
 import javax.persistence.*;
 
@@ -13,92 +14,102 @@ public class Data implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "timestamp")
-	private String timestampData;	//bisogna vedere se il tipo String va bene
+	private long timestamp;	
 	
 	@Column(name = "anno", nullable = false)
-	private int annoData;
+	private int anno;
 	
 	@Column(name = "mese", nullable = false)
-	private int meseData;
+	private int mese;
 	
 	@Column(name = "giorno", nullable = false)
-	private int giornoData;
+	private int giorno;
 	
 	@Column(name = "ora", nullable = false)
-	private int oraData;
+	private int ora;
 	
 	@Column(name = "minuto", nullable = false)
-	private int minutoData;
+	private int minuto;
 	
 	@Column(name = "secondo", nullable = false)
-	private int secondoData;
+	private int secondo;
 
 	/*
 	 * costruttore di default
 	 */
 	public Data(){
+		
 	}
 	
+	public Data(GregorianCalendar dataAttuale){
+		this.timestamp = dataAttuale.getTimeInMillis();
+		this.anno =  dataAttuale.get(GregorianCalendar.YEAR) ;
+		this.mese = GregorianCalendar.MONTH + 1 ; //i mesi partono da 0
+		this.giorno = dataAttuale.get(GregorianCalendar.DATE) ;
+		this.ora = dataAttuale.get(GregorianCalendar.HOUR_OF_DAY) ;
+		this.minuto =  dataAttuale.get(GregorianCalendar.MINUTE );
+		this.secondo = dataAttuale.get(GregorianCalendar.SECOND);
+	}
 	/*
 	 * *******************************
 	 * Inizio metodi setter e getter *
 	 *********************************
 	 */
 	
-	public String getTimestampData() {
-		return timestampData;
+	public long getTimestamp() {
+		return timestamp;
 	}
 
-	public void setTimestampData(String timestampData) {
-		this.timestampData = timestampData;
+	public void setTimestamp(long timestamp) {
+		this.timestamp = timestamp;
 	}
 
-	public int getAnnoData() {
-		return annoData;
+	public int getAnno() {
+		return anno;
 	}
 
-	public void setAnnoData(int annoData) {
-		this.annoData = annoData;
+	public void setAnno(int anno) {
+		this.anno = anno;
 	}
 
-	public int getMeseData() {
-		return meseData;
+	public int getMese() {
+		return mese;
 	}
 
-	public void setMeseData(int meseData) {
-		this.meseData = meseData;
+	public void setMese(int mese) {
+		this.mese = mese;
 	}
 
-	public int getGiornoData() {
-		return giornoData;
+	public int getGiorno() {
+		return giorno;
 	}
 
-	public void setGiornoData(int giornoData) {
-		this.giornoData = giornoData;
+	public void setGiorno(int giorno) {
+		this.giorno = giorno;
 	}
 
-	public int getOraData() {
-		return oraData;
+	public int getOra() {
+		return ora;
 	}
 
-	public void setOraData(int oraData) {
-		this.oraData = oraData;
+	public void setOra(int ora) {
+		this.ora = ora;
 	}
 
-	public int getMinutoData() {
-		return minutoData;
+	public int getMinuto() {
+		return minuto;
 	}
 
-	public void setMinutoData(int minutoData) {
-		this.minutoData = minutoData;
+	public void setMinuto(int minuto) {
+		this.minuto = minuto;
 	}
 
-	public int getSecondoData() {
-		return secondoData;
+	public int getSecondo() {
+		return secondo;
 	}
 
-	public void setSecondoData(int secondoData) {
-		this.secondoData = secondoData;
+	public void setSecondo(int secondo) {
+		this.secondo = secondo;
 	}
 	
 	/*
@@ -108,8 +119,6 @@ public class Data implements Serializable{
 	 */
 	
 	
-	
-	//override equals e compareTo
 	
 	
 /*
