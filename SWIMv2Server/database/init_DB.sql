@@ -15,13 +15,13 @@ use swimv2;
 
 #tabella profilo
 create table profilo (
-	nickname varchar(15) primary key,
-	pwd	varchar(20) not null,
-	email varchar(25) not null,
+	nickname varchar(20) primary key,
+	password varchar(20) not null,
+	email varchar(255)  not null,
 	nome varchar(20) not null,
 	cognome varchar(20) not null,
-	avatar varchar(30),
-	citta varchar(20),
+	avatar varchar(20),
+	citta varchar(50),
 	sesso enum('M', 'F'),
 	anno_nascita year,
 	ruolo enum('admin', 'user') default 'user'
@@ -29,15 +29,15 @@ create table profilo (
 
 #tabella abilita
 create table abilita (
-	codice smallint unsigned auto_increment primary key,
-	nome varchar(15) not null, 
-	icona blob,
-	descrizione text not null
+	codice int unsigned auto_increment primary key,
+	nome varchar(20) not null, 
+	icona varchar(20),
+	descrizione varchar(140) not null
 );
 
 #tabella data
 create table data_completa (
-	ts datetime primary key, #timestamp
+	timestamp datetime primary key, #timestamp
 	anno smallint(4) not null,
 	mese smallint(2) unsigned not null,
 	giorno smallint(2) unsigned not null,
@@ -49,10 +49,10 @@ create table data_completa (
 #tabella proposta_abilita
 create table proposta_abilita (
 	codice int unsigned auto_increment primary key,
-	nome varchar(15) not null,
-	descrizione text not null,
+	nome varchar(20) not null,
+	descrizione varchar(140) not null,
 	stato_richiesta enum('visionata', 'nonVisionata') default 'nonVisionata' not null,
-	user_proponente varchar(15) not null,
+	user_proponente varchar(20) not null,
 	foreign key(user_proponente) references profilo(nickname)
 		#se elimino (aggiorno) un utente allora elimino (aggiorno) anche le sue proposte di nuove abilita
 		on delete cascade
@@ -61,9 +61,11 @@ create table proposta_abilita (
 
 #tabella dichiarazione
 create table dichiarazione(
-	user varchar(15),
-	codice_abilita smallint unsigned,
-	primary key(user, codice_abilita),
+	id int unsigned auto_increment primary key,	
+	user varchar(20),
+	codice_abilita int unsigned,
+	numero_feedback int unsigned default 0,
+	media_valutazioni int unsigned default 0,
 	#se elimino (aggiorno) un utente allora elimino (aggiorno) anche le sue dichiarazioni di abilita
 	foreign key(user) references profilo(nickname)
 		on delete cascade
@@ -77,8 +79,8 @@ create table dichiarazione(
 #tabella amicizia
 create table amicizia (
 	codice int unsigned auto_increment primary key,
-	user_richiedente varchar(15) not null,
-	user_destinatario varchar(15) not null,
+	user_richiedente varchar(20) not null,
+	user_destinatario varchar(20) not null,
 	momento_richiesta datetime not null,
 	momento_accettazione datetime,
 	#se elimino (aggiorno) lo user richiedente allora tutte le sue richieste di amicizia devono essere eliminate(aggiornate)
@@ -90,11 +92,11 @@ create table amicizia (
 		on delete cascade
 		on update cascade,
 	#non e' possibile eliminare (aggiornare) una data associata al momento di richiesta di un'amicizia
-	foreign key(momento_richiesta) references data_completa(ts)
+	foreign key(momento_richiesta) references data_completa(timestamp)
 		on delete restrict
 		on update restrict,
 	#non e' possibile eliminare (aggiornare) una data associata al momento di accettazione di un'amicizia
-	foreign key(momento_accettazione) references data_completa(ts)
+	foreign key(momento_accettazione) references data_completa(timestamp)
 		on delete restrict
 		on update restrict
 );
@@ -102,10 +104,10 @@ create table amicizia (
 #tabella aiuto
 create table aiuto (
 	codice int unsigned auto_increment primary key,
-	descrizione text not null,
-	user_richiedente varchar(15) not null,
-	user_destinatario varchar(15) not null,
-	codice_abilita smallint unsigned not null,
+	descrizione varchar(140) not null,
+	user_richiedente varchar(20) not null,
+	user_destinatario varchar(20) not null,
+	codice_abilita int unsigned not null,
 	momento_richiesta datetime not null,
 	momento_accettazione datetime,
 	#se elimino (aggiorno) lo user richiedente allora tutte le sue richieste di aiuto devono essere eliminate(aggiornate)
@@ -121,11 +123,11 @@ create table aiuto (
 		on delete restrict
 		on update restrict,
 	#non e' possibile eliminare (aggiornare) una data associata al momento di richiesta di un aiuto
-	foreign key(momento_richiesta) references data_completa(ts)
+	foreign key(momento_richiesta) references data_completa(timestamp)
 		on delete restrict
 		on update restrict,
 	#non e' possibile eliminare (aggiornare) una data associata al momento di accettazione di un aiuto
-	foreign key(momento_accettazione) references data_completa(ts)
+	foreign key(momento_accettazione) references data_completa(timestamp)
 		on delete restrict
 		on update restrict
 );
@@ -133,15 +135,15 @@ create table aiuto (
 #tabella feedback
 create table feedback (
 	codice_aiuto int unsigned auto_increment primary key,
-	valutazione_numerica tinyint(1) not null,
-	valutazione_estesa text not null,
+	valutazione_numerica smallint(1) not null,
+	valutazione_estesa varchar(140) not null,
 	momento_rilascio datetime not null,
 	#se elimino (aggiorno) l'aiuto allora elimino (aggiorno) anche il feedback ad esso associato
 	foreign key(codice_aiuto) references aiuto(codice)
 		on delete cascade
 		on update cascade,
 	#non e' possibile eliminare (aggiornare) una data associata al momento di rilascio di un feedback
-	foreign key(momento_rilascio) references data_completa(ts)
+	foreign key(momento_rilascio) references data_completa(timestamp)
 		on delete restrict
 		on update restrict
 );
@@ -152,4 +154,4 @@ insert into profilo values ('admin', 'admin', 'inserisci la tua mail',
 							null, null, null, null, 'admin');
 
 #Creazione della data utilizzata convenzionalmente per indicare il momentoAccettazione null
-#insert into data_completa values( timestamp('9999-12-31 23:59:59'),9999, 12, 31, 23, 59, 59);
+#insert into data_completa values( '9999-12-31 23:59:59',9999, 12, 31, 23, 59, 59);

@@ -29,10 +29,10 @@ insert into proposta_abilita values(default, 'baby-sitter', 'nottrurno', 'vision
 #select * from proposta_abilita;
 
 #Inserimento tuple tabella dichiarazione
-insert into dichiarazione values('cla09', 1);
-insert into dichiarazione values('euge', 1);
-insert into dichiarazione values('kikka', 3);
-insert into dichiarazione values('franco', 2);
+insert into dichiarazione values(default, 'cla09', 1, default, default);
+insert into dichiarazione values(default,'euge', 1, default, default);
+insert into dichiarazione values(default,'kikka', 3, default, default);
+insert into dichiarazione values(default,'franco', 2, default, default);
 
 #select * from dichiarazione;
 
