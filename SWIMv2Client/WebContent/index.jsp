@@ -11,6 +11,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>SWIMv2</title>
+		<link rel="stylesheet" href="CSS/style.css">
 	</head>
 	<body>
 		<div id="pagina">
@@ -18,7 +19,7 @@
 				<img src="Immagini/logo.png">
 			</div>
 			<div id="body">
-				<div id="boxHomePage">
+				<div id="boxLeft">
 					<p id="titoloBox">Effettua la registrazione</p>
 					<form action="" method="post">
 						<div id="informazioniRegistrazione">
@@ -91,10 +92,12 @@
 								<input id="rAvatar" name="rAvatar" type="file" accept="image/*">
 							</p>
 						</div>
-						<input id="pulsante" type="submit" value="Registrazione">
+						<center>
+							<input id="pulsante" type="submit" value="Registrazione">
+						</center>
 					</form>
 				</div>
-				<div id="boxHomePage">
+				<div id="boxRight">
 					<p id="titoloBox">Esegui l'accesso</p>
 					<form action="" method="post">
 						<div id="informazioniLogin">
@@ -107,13 +110,17 @@
 								<input id="password" name="password" type="password" maxlength="20" required="required">
 							</p>
 						</div>
-						<input id="pulsante" type="submit" value="Login">
+						<center>
+							<input id="pulsante" type="submit" value="Login">
+						</center>
 					</form>
 				</div>
-				<div id="boxHomePage">
+				<div id="boxRight">
 					<p id="titoloBox">Accedi senza regstrarti</p>
 					<form action="" method="post">
-						<input id="pulsante" type="submit" value="Accesso Guest">
+						<center>
+							<input id="pulsante" type="submit" value="Accesso Guest">
+						</center>
 					</form>
 				</div>
 			</div>
