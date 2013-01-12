@@ -42,6 +42,7 @@ public class TestSingoliMetodiGestoreData extends HttpServlet {
 
 			System.out.println("****** sono nella servlet--- collegamento stabilito **********");
 			
+			/*
 			GregorianCalendar c = gestoreDataRemoto.generaTimestamp();
 			long a = c.getTimeInMillis();
 			System.out.println("*** milli: "+ a);
@@ -52,6 +53,7 @@ public class TestSingoliMetodiGestoreData extends HttpServlet {
 			else{
 				System.out.println("********non c'è******");
 			}
+			*/
 			
 			System.out.println("\n\n####### creo una data #####");
 			Data d = gestoreDataRemoto.creaData();

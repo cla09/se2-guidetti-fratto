@@ -1,3 +1,5 @@
+drop database swimv2;
+
 #creazione della base dati
 create database swimv2;
 
@@ -37,7 +39,8 @@ create table abilita (
 
 #tabella data
 create table data_completa (
-	timestamp bigint primary key, #timestamp
+	#id int unsigned auto_increment primary key,
+	timestamp bigint primary key,
 	anno smallint(4) not null,
 	mese smallint(2) unsigned not null,
 	giorno smallint(2) unsigned not null,
@@ -81,7 +84,7 @@ create table amicizia (
 	codice int unsigned auto_increment primary key,
 	user_richiedente varchar(20) not null,
 	user_destinatario varchar(20) not null,
-	momento_richiesta bigint not null,
+	momento_richiesta bigint  not null,
 	momento_accettazione bigint,
 	#se elimino (aggiorno) lo user richiedente allora tutte le sue richieste di amicizia devono essere eliminate(aggiornate)
 	foreign key(user_richiedente) references profilo(nickname)

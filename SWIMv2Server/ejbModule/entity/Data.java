@@ -10,7 +10,12 @@ import javax.persistence.*;
 public class Data implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	
+	/*
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private int idData;
+	*/
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "timestamp")
@@ -111,6 +116,16 @@ public class Data implements Serializable{
 	public void setSecondo(int secondo) {
 		this.secondo = secondo;
 	}
+
+	/*
+	public int getIdData() {
+		return idData;
+	}
+
+	public void setIdData(int idData) {
+		this.idData = idData;
+	}
+	*/
 	
 	/*
 	 * *******************************
