@@ -58,7 +58,7 @@ public class TestSingoliMetodiGestoreData extends HttpServlet {
 			System.out.println("\n\n####### creo una data #####");
 			Data d = gestoreDataRemoto.creaData();
 			
-			System.out.println("timestamp: "+ d.getTimestamp());
+			System.out.println("data creata\n\n"+d.getTimestamp());
 			
 
 		}

@@ -1,6 +1,7 @@
 package session;
 
 import javax.ejb.Remote;
+import javax.persistence.NoResultException;
 
 import entity.Data;
 
