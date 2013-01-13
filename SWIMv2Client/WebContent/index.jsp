@@ -5,6 +5,8 @@
 <%@ page import="java.io.FileNotFoundException" %>
 <%@ page import="java.util.regex.Pattern" %>
 <%@ page import="java.util.regex.Matcher" %>
+<%@ page import="utility.Messaggio" %>
+<%@ page import="utility.TipoMessaggio" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -18,6 +20,16 @@
 			<div id="logo">
 				<img src="Immagini/logo.png">
 			</div>
+			<%
+				Messaggio messaggio = (Messaggio) request.getAttribute("messaggio");
+				if(messaggio != null) {
+			%>
+					<div id="messaggio<%= messaggio.getTipo().toString() %>">
+						<center><%= messaggio.getTesto() %></center>
+					</div>
+			<%
+				}
+			%>
 			<div id="body">
 				<div id="boxLeft">
 					<div id="titoloBox">
@@ -95,7 +107,7 @@
 							</p>
 						</div>
 						<center>
-							<input id="pulsante" type="submit" value="Registrazione">
+							<input id="pulsante" type="submit" value="Continua">
 						</center>
 					</form>
 				</div>
@@ -124,6 +136,9 @@
 						<center>Accedi senza regstrarti</center>
 					</div>
 					<form action="" method="post">
+						<div id="informazioniBox">
+							<p></p>
+						</div>
 						<center>
 							<input id="pulsante" type="submit" value="Accesso Guest">
 						</center>
