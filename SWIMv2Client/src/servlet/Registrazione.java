@@ -50,15 +50,15 @@ public class Registrazione extends HttpServlet {
 			String cognome = (String) request.getAttribute("rCognome");
 			String sesso = (String) request.getAttribute("rSesso");
 			int annoNascita = (Integer) request.getAttribute("rAnnoNascita");
-			String città = (String) request.getAttribute("rCittà");
+			String citta = (String) request.getAttribute("rCitta");
 			String password = (String) request.getAttribute("rPassword");
 			String avatar = "";
-			gestoreUser.registra(nickname, password, email, nome, cognome, avatar, città, sesso, annoNascita);
+			gestoreUser.registra(nickname, password, email, nome, cognome, avatar, citta, sesso, annoNascita);
 			/* inltrare il nickname alla prossima pagina jsp */
 			GestoreAbilitaRemote gestoreAbilita = (GestoreAbilitaRemote) context.lookup("GestoreAbilita/remote");
-			/* recuperare le abilità disponibili nel sistema */
+			/* recuperare le abilita' disponibili nel sistema */
 			/* inoltrare tutti i parametri ricevuti alla prossima pagina jsp */
-			/* inoltrare la lista delle abilità recuperate alla prossima pagina jsp */
+			/* inoltrare la lista delle abilita' recuperate alla prossima pagina jsp */
 			/* chiamare la prossima pagina jsp */
 		} catch (NamingException e) {
 			e.printStackTrace();

@@ -66,8 +66,8 @@
 								</select>
 							</p>
 							<p>
-								<label for="rCittà">Città:</label>
-								<select id="rCittà" name="rCittà">
+								<label for="rCitta">Città:</label>
+								<select id="rCitta" name="rCitta">
 									<%
 									    String città = null;
 								        Scanner reader = null;
