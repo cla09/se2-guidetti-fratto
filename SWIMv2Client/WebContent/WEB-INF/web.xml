@@ -79,4 +79,14 @@
     <servlet-name>TestSingoliMetodiGestoreData</servlet-name>
     <url-pattern>/TestSingoliMetodiGestoreData</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Registrazione</display-name>
+    <servlet-name>Registrazione</servlet-name>
+    <servlet-class>servlet.Registrazione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Registrazione</servlet-name>
+    <url-pattern>/Registrazione</url-pattern>
+  </servlet-mapping>
 </web-app>
