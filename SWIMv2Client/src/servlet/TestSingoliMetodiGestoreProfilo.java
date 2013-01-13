@@ -46,7 +46,7 @@ public class TestSingoliMetodiGestoreProfilo extends HttpServlet {
 			String percorsoAvatar = "percorsoProva"; 
 			String citta = "cz";
 			String sesso = "M";
-			int annoNascita = 1990;
+			int annoNascita = 1990; 
 			
 			
 			
