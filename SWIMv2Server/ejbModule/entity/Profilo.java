@@ -12,10 +12,13 @@ import javax.persistence.*;
 public abstract class Profilo implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	
+	 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "nickname")
+	@Column(name = "id")
+	private long id;
+	
+	@Column(name = "nickname", unique = true)
 	private String nickname;
 	
 	@Column(name = "password", nullable = false)
@@ -32,6 +35,9 @@ public abstract class Profilo implements Serializable{
 	
 	@Column(name = "avatar")
 	private String avatar;		//da verificare come fare l'upload ed il recuper
+	
+	@Column(name = "citta")
+	private String citta;
 	
 	@Column(name = "sesso")
 	private String sesso;
@@ -58,6 +64,14 @@ public abstract class Profilo implements Serializable{
 	 * Inizio metodi setter e getter *
 	 *********************************
 	 */
+	public long getId(){
+		return id;
+	}
+	
+	public void setId(long id){
+		this.id = id;
+	}
+	
 	public String getNickname() {
 		return nickname;
 	}
@@ -121,6 +135,18 @@ public abstract class Profilo implements Serializable{
 	public void setAvatarProfilo(String avatar) {
 		this.avatar = avatar;
 	}
+
+
+	public String getCitta() {
+		return citta;
+	}
+
+
+	public void setCitta(String citta) {
+		this.citta = citta;
+	}
+
+
 	
 	/*
 	 * *******************************

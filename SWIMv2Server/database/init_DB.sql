@@ -17,7 +17,8 @@ use swimv2;
 
 #tabella profilo
 create table profilo (
-	nickname varchar(20),
+	id bigint unsigned auto_increment,
+	nickname varchar(20) unique,
 	password varchar(20) not null,
 	email varchar(255)  not null,
 	nome varchar(20) not null,
@@ -27,7 +28,7 @@ create table profilo (
 	sesso enum('M', 'F'),
 	anno_nascita year,
 	ruolo enum('admin', 'user') default 'user',
-	primary key(nickname)
+	primary key(id)
 );
 
 #tabella abilita
@@ -160,7 +161,7 @@ create table feedback (
 );
 
 #Creazione dell'utente amministratore
-insert into profilo values ('admin', 'admin', 'inserisci la tua mail', 
+insert into profilo values (default, 'admin', 'admin', 'inserisci la tua mail', 
 							'inserisci nome', 'inserisci cognome',
 							null, null, null, null, 'admin');
 

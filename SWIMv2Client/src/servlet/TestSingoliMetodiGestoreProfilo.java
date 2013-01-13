@@ -35,10 +35,26 @@ public class TestSingoliMetodiGestoreProfilo extends HttpServlet {
 		try {
 			Context ctx = getInitialContext();
 
-			GestoreProfiloRemote gestorePropostaAbilitaRemoto = (GestoreProfiloRemote) ctx.lookup("GestoreProfiloJNDI");
+			GestoreProfiloRemote gestoreProfiloaRemoto = (GestoreProfiloRemote) ctx.lookup("GestoreProfiloJNDI");
 
 			System.out.println("****** sono nella servlet--- collegamento stabilito **********");
-
+			String nickname = "pippo";
+			String password = "pluto";
+			String email = "pippo.com";
+			String nome = "filippo";
+			String cognome = "rocchi";
+			String percorsoAvatar = "percorsoProva"; 
+			String citta = "cz";
+			String sesso = "M";
+			int annoNascita = 1990;
+			
+			
+			
+			boolean prova = gestoreProfiloaRemoto.registra(nickname, password, email, nome, cognome, percorsoAvatar, citta, sesso, annoNascita); 
+			
+			
+			
+			
 
 		}
 		catch (Exception e) {
