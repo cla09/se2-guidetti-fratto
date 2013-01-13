@@ -24,6 +24,15 @@ public class User extends Profilo implements Serializable{
 	private Set<Abilita> abilitaDichiarate;
 	*/
 	
+	@Column(name = "citta")
+	private String citta;
+	
+	@Column(name = "sesso")
+	private String sesso;
+	
+	@Column(name = "anno_nascita")
+	private int annoNascita;
+	
 	@OneToMany(mappedBy = "userDichiarante", cascade = CascadeType.REMOVE)
 	private List<Dichiarazione> dichiarazioni;
 	
@@ -107,7 +116,31 @@ public class User extends Profilo implements Serializable{
 	public void setRichiesteAiutoRicevute(List<Aiuto> richiesteAiutoRicevute) {
 		this.richiesteAiutoRicevute = richiesteAiutoRicevute;
 	}
+
+	public String getSesso() {
+		return sesso;
+	}
+
+	public void setSesso(String sesso) {
+		this.sesso = sesso;
+	}
+
+	public int getAnnoNascita() {
+		return annoNascita;
+	}
+
+	public void setAnnoNascita(int annoNascita) {
+		this.annoNascita = annoNascita;
+	}
 	
+	public String getCitta() {
+		return citta;
+	}
+
+
+	public void setCitta(String citta) {
+		this.citta = citta;
+	}
 	
 	/*
 	 * *******************************

@@ -18,20 +18,28 @@ import org.hibernate.annotations.Parameter;
 
 @Entity
 @Table(name = "feedback")
+/*
+ * con il gioco dell'id è probabile che non serva più
 @GenericGenerator(name="aiutoPrimaryKey", 
 					strategy="foreign",
 					parameters={
 								@Parameter(name="property", value="aiuto")
 								}
 				)
+*/
 public class Feedback implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@Column(name = "id")
+	private long id;
 	
+	/*
 	@Id
 	@GeneratedValue(generator = "aiutoPrimaryKey")
-	@Column(name = "codice_aiuto")
+	*/
+	@Column(name = "codice_aiuto", unique = true)
     private int codiceFeedback;
     
     @OneToOne(mappedBy = "feedback")	
@@ -101,6 +109,16 @@ public class Feedback implements Serializable{
 
 	public void setMomentoRilascioFeedback(Data momentoRilascioFeedback) {
 		this.momentoRilascioFeedback = momentoRilascioFeedback;
+	}
+
+
+	public long getId() {
+		return id;
+	}
+
+
+	public void setId(long id) {
+		this.id = id;
 	}
 	
 	/*

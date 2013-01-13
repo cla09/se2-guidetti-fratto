@@ -146,11 +146,12 @@ create table aiuto (
 
 #tabella feedback
 create table feedback (
-	codice_aiuto int unsigned auto_increment,
+	id bigint unsigned auto_increment,
+	codice_aiuto int unsigned unique,
 	valutazione_numerica smallint(1) not null,
 	valutazione_estesa varchar(140) not null,
 	momento_rilascio bigint unsigned not null,
-	primary key (codice_aiuto),
+	primary key (id),
 	#se elimino (aggiorno) l'aiuto allora elimino (aggiorno) anche il feedback ad esso associato
 	foreign key(codice_aiuto) references aiuto(codice)
 		on delete cascade

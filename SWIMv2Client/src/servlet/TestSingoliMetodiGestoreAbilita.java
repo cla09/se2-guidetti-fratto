@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.util.Hashtable;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -9,6 +10,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import entity.Abilita;
 
 import session.GestoreAbilitaRemote;
 import session.GestoreAmiciziaRemote;
@@ -35,11 +38,26 @@ public class TestSingoliMetodiGestoreAbilita extends HttpServlet {
 		try {
 			Context ctx = getInitialContext();
 
-			GestoreAbilitaRemote gestorePropostaAbilitaRemoto = (GestoreAbilitaRemote) ctx.lookup("GestoreAbilitaJNDI");
+			GestoreAbilitaRemote gestoreAbilitaRemoto = (GestoreAbilitaRemote) ctx.lookup("GestoreAbilitaJNDI");
 
 			System.out.println("****** sono nella servlet--- collegamento stabilito **********");
 
-
+			/*
+			 * METODO: recuperaAbilitaSistema
+			 * 
+			 * test: deve mostrare tutte le abilita presenti nel database
+			 
+			List<Abilita> abilitaDisponibili;
+			
+			abilitaDisponibili = gestoreAbilitaRemoto.recuperaAbilitaSistema();
+			
+			for(Abilita a: abilitaDisponibili){
+				System.out.println(a.getNome());
+			}
+			
+			//metodo funzionante
+			 * 
+			*/
 		}
 		catch (Exception e) {
 			// TODO Auto-generated catch block

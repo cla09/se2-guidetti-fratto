@@ -7,7 +7,6 @@ import javax.persistence.*;
 
 @Entity
 @DiscriminatorColumn(name = "ruolo", discriminatorType = DiscriminatorType.STRING)
-@DiscriminatorValue("X")
 @Table(name = "profilo")
 public abstract class Profilo implements Serializable{
 
@@ -36,14 +35,6 @@ public abstract class Profilo implements Serializable{
 	@Column(name = "avatar")
 	private String avatar;		//da verificare come fare l'upload ed il recupero
 	
-	@Column(name = "citta")
-	private String citta;
-	
-	@Column(name = "sesso")
-	private String sesso;
-	
-	@Column(name = "anno_nascita")
-	private int annoNascita;
 	
 	/*
 	 * da verificare se l'approccio con DiscriminatorColumn funziona (bisogna avere il login per farlo)
@@ -112,41 +103,27 @@ public abstract class Profilo implements Serializable{
 		this.cognome = cognome;
 	}
 
-	public String getSesso() {
-		return sesso;
-	}
+	
 
-	public void setSesso(String sesso) {
-		this.sesso = sesso;
-	}
-
-	public int getAnnoNascita() {
-		return annoNascita;
-	}
-
-	public void setAnnoNascita(int annoNascita) {
-		this.annoNascita = annoNascita;
-	}
-
-	public String getAvatarProfilo() {
+	public String getAvatar() {
 		return avatar;
 	}
 
-	public void setAvatarProfilo(String avatar) {
+	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
 
-
-	public String getCitta() {
-		return citta;
+/*
+	public String getRuolo() {
+		return ruolo;
 	}
 
 
-	public void setCitta(String citta) {
-		this.citta = citta;
+	public void setRuolo(String ruolo) {
+		this.ruolo = ruolo;
 	}
 
-
+*/
 	
 	/*
 	 * *******************************

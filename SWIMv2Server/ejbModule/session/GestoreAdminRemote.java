@@ -12,6 +12,7 @@ public interface GestoreAdminRemote {
 	 * 
 	 * @return
 	 */
-	public Admin getAdmin();
-	
+	Admin getAdmin();
+
+	boolean modificaInformazioniAdmin(Admin adminModificato);
 }

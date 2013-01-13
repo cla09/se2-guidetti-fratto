@@ -45,19 +45,19 @@ public class Abilita implements Serializable{
 	 *********************************
 	 */
 	
-	public int getCodiceAbilita() {
+	public int getCodice() {
 		return codiceAbilita;
 	}
 
-	public void setCodiceAbilita(int codiceAbilita) {
+	public void setCodice(int codiceAbilita) {
 		this.codiceAbilita = codiceAbilita;
 	}
 
-	public String getNomeAbilita() {
+	public String getNome() {
 		return nomeAbilita;
 	}
 
-	public void setNomeAbilita(String nomeAbilita) {
+	public void setNome(String nomeAbilita) {
 		this.nomeAbilita = nomeAbilita;
 	}
 

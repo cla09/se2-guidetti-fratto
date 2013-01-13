@@ -5,14 +5,7 @@ import javax.ejb.Remote;
 @Remote
 public interface GestoreProfiloRemote {
 
-	/**
-	 * Il metodo serve per verificare la disponibilità di un nickname
-	 *
-	 * @param nickname 	nickname da verificare se è disponibile
-	 * 
-	 * @return true, se il nickname è disponibile; false, se il nickname non è disponibile
-	 */
-	public boolean controllaDisponibilitaNickname(String nickname);
+	
 	
 	/**
 	 * Il metodo serve per recuperare il ruolo associato all'utente che ha il nickname passato come parametro
@@ -21,4 +14,14 @@ public interface GestoreProfiloRemote {
 	 * @return	{admin, user}
 	 */
 	public String getRuolo(String nickname); 
+	
+	/**
+	 * Il metodo si occupa di verificare se le credenziali inserite da un utente corrispondono a delle credenziali valide
+	 * 
+	 * @param nickname
+	 * @param password
+	 * 
+	 * @return	true, se le credenziali sono valide; false altrimenti
+	 */
+	boolean controllaCredenziali(String nickname, String password);
 }

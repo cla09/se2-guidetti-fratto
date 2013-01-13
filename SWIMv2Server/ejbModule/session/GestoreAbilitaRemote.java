@@ -9,6 +9,11 @@ import entity.Abilita;
 @Remote
 public interface GestoreAbilitaRemote {
 
+	/**
+	 * Il metodo serve per recuperare tutte le abilità disponibili nel sistema
+	 * 
+	 * @return
+	 */
+	List<Abilita> recuperaAbilitaSistema();
 	
-
 }

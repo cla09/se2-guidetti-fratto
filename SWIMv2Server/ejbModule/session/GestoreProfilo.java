@@ -26,39 +26,27 @@ public class GestoreProfilo implements GestoreProfiloRemote {
         // TODO Auto-generated constructor stub
     }
 
-    
-	@Override
-	public boolean controllaDisponibilitaNickname(String nickname) {
-		System.out.println("verifico se c'è l'utente");
-		
-		if(getProfilo(nickname) != null){
-			//nickname non disponibile
-			System.out.println("nickname non disponibile");
-			return false;
-		}
-		else{
-			//nickname disponibile
-			System.out.println("nickname disponibile");
-			return true;
-		}
-	}
-	
-	
+
 	@Override
 	public String getRuolo(String nickname) {
 		String ruoloDaRecuperare;
-
-		Query q = gestoreDB.createQuery("SELECT p.ruolo FROM Profilo p WHERE p.nickname = :nickname");
-		q.setParameter("nickname", nickname);
-
-		try{
-			ruoloDaRecuperare = (String) q.getSingleResult();
-			return ruoloDaRecuperare;
+		Profilo profiloDaRecuperare;
+		
+		if(nickname.equals("admin")){
+			ruoloDaRecuperare = "admin";
 		}
-		catch (NoResultException e) {
-			System.out.println("utente non disponibile");
-			return null;
+		else{
+			//sarà uno user o non esiste
+			profiloDaRecuperare = getProfilo(nickname);
+			if(profiloDaRecuperare != null){
+				ruoloDaRecuperare = "user";
+			}
+			else{
+				ruoloDaRecuperare = null;
+			}
 		}
+		
+		return ruoloDaRecuperare;
 	}
 
 	
@@ -67,7 +55,7 @@ public class GestoreProfilo implements GestoreProfiloRemote {
 	 */
 	private Profilo getProfilo(String nickname){
 		Profilo profiloDaRecuperare;
-		
+	
 		Query q = gestoreDB.createQuery("SELECT p FROM Profilo p WHERE p.nickname = :nickname");
 		q.setParameter("nickname", nickname);
 		
@@ -76,7 +64,26 @@ public class GestoreProfilo implements GestoreProfiloRemote {
 			return profiloDaRecuperare;
 		}
 		catch (NoResultException e) {
-			return null;
+			profiloDaRecuperare = null;
+			return profiloDaRecuperare;
+		}
+	}
+
+
+	@Override
+	public boolean controllaCredenziali(String nickname, String password) {
+		Profilo profiloDaRecuperare;
+
+		Query q = gestoreDB.createQuery("SELECT p FROM Profilo p WHERE p.nickname = :nickname AND p.password = :password");
+		q.setParameter("nickname", nickname);
+		q.setParameter("password", password);
+			
+		try{
+			profiloDaRecuperare = (Profilo) q.getSingleResult();
+			return true;
+		}
+		catch (NoResultException e) {
+			return false;
 		}
 	}
 

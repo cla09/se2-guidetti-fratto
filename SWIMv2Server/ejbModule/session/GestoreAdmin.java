@@ -9,6 +9,7 @@ import javax.persistence.Query;
 import org.jboss.ejb3.annotation.RemoteBinding;
 
 import entity.Admin;
+import entity.User;
 
 /**
  * Session Bean implementation class GestoreAdmin
@@ -29,7 +30,8 @@ public class GestoreAdmin implements GestoreAdminRemote {
 
 	@Override
 	public Admin getAdmin() {
-
+		
+		System.out.println("sono nel server");
 		Admin adminDaRecuperare;
 
 		Query q = gestoreDB.createQuery("SELECT a FROM Admin a WHERE a.nickname = :nickname");
@@ -40,7 +42,30 @@ public class GestoreAdmin implements GestoreAdminRemote {
 			return adminDaRecuperare;
 		}
 		catch (NoResultException e) {
+			System.out.println("errore nel recupero");
 			return null;
+		}
+	}
+
+	@Override
+	public boolean modificaInformazioniAdmin(Admin adminModificato) {
+		Admin adminDaAggiornare;
+		
+		adminDaAggiornare = getAdmin();
+		
+		adminDaAggiornare.setPassword(adminModificato.getPassword());
+		adminDaAggiornare.setEmail(adminModificato.getEmail());
+		adminDaAggiornare.setNome(adminModificato.getNome());
+		adminDaAggiornare.setCognome(adminModificato.getCognome());
+		adminDaAggiornare.setAvatar(adminModificato.getAvatar());
+		
+		try{
+			gestoreDB.merge(adminDaAggiornare);
+			return true;
+		}
+		catch(IllegalArgumentException e){
+			System.out.println("errore nell'aggiornamento delle informazioni");
+			return false;
 		}
 	}
 
