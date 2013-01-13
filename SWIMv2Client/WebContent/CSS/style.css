@@ -14,26 +14,7 @@
 	margin-top: 15px;
 }
 
-#rNome, #rCognome, #rSesso, #rAnnoNascita, #rCittà, #rNickname, #rPassword, #rEmail, #rAvatar, #nickname, #password {
-	width: 220px;
-}
-
-#informazioniRegistrazione, #informazioniLogin {
-	text-align: right;
-}
-
-#boxLeft {
-	border: 1px solid grey;
-	border-radius: 10px;
-	width: 350px;
-	float: left;
-	padding: 10px;
-	padding-right: 15px;
-	margin: 30px;
-	background-color: #CCFFFF;
-}
-
-#boxRight {
+#boxLeft, #boxRight {
 	border: 1px solid grey;
 	border-radius: 10px;
 	width: 350px;
@@ -41,12 +22,28 @@
 	padding: 10px;
 	padding-right: 15px;
 	margin: 30px;
-	background-color: #CCFFFF;
+	background-color: #CFE7F5;
+}
+
+#boxLeft {
+	float: left;
+}
+
+#boxRight {
+	float: right;
 }
 
 #titoloBox {
 	border: 1px solid grey;
-	border-radius: 10px;
+	border-radius: 5px;
 	text-align: center;
-	background-color: yellow;
+	background-color: #FFFF99;
+}
+
+#informazioniBox {
+	text-align: right;
+}
+
+#informazioniBox input, select {
+	width: 220px;
 }

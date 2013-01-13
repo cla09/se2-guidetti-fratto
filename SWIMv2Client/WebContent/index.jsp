@@ -20,9 +20,11 @@
 			</div>
 			<div id="body">
 				<div id="boxLeft">
-					<p id="titoloBox">Effettua la registrazione</p>
+					<div id="titoloBox">
+						<center>Effettua la registrazione</center>
+					</div>
 					<form action="" method="post">
-						<div id="informazioniRegistrazione">
+						<div id="informazioniBox">
 							<p>
 								<label for="rNome">Nome:</label>
 								<input id="rNome" name="rNome" type="text" maxlength="20" required="required">
@@ -98,9 +100,11 @@
 					</form>
 				</div>
 				<div id="boxRight">
-					<p id="titoloBox">Esegui l'accesso</p>
+					<div id="titoloBox">
+						<center>Esegui l'accesso</center>
+					</div>
 					<form action="" method="post">
-						<div id="informazioniLogin">
+						<div id="informazioniBox">
 							<p>
 								<label for="nickname">Nickname:</label>
 								<input id="nickname" name="nickname" type="text" maxlength="20" required="required">
@@ -116,7 +120,9 @@
 					</form>
 				</div>
 				<div id="boxRight">
-					<p id="titoloBox">Accedi senza regstrarti</p>
+					<div id="titoloBox">
+						<center>Accedi senza regstrarti</center>
+					</div>
 					<form action="" method="post">
 						<center>
 							<input id="pulsante" type="submit" value="Accesso Guest">
