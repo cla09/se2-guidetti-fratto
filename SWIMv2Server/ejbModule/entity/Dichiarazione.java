@@ -11,9 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
 
 @Entity
-@Table(name = "dichiarazione")
+@Table(name = "dichiarazione", uniqueConstraints = {@UniqueConstraint(columnNames = {"user", "codice_abilita" } ) } )
 public class Dichiarazione implements Serializable{
 
 	

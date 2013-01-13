@@ -17,7 +17,7 @@ use swimv2;
 
 #tabella profilo
 create table profilo (
-	id bigint unsigned auto_increment,
+	id bigint unsigned auto_increment,   #serve per risolvere un problema legato agli entity bean
 	nickname varchar(20) unique,
 	password varchar(20) not null,
 	email varchar(255)  not null,
@@ -26,7 +26,7 @@ create table profilo (
 	avatar varchar(20),
 	citta varchar(50),
 	sesso enum('M', 'F'),
-	anno_nascita year,
+	anno_nascita smallint(4) unsigned,
 	ruolo enum('admin', 'user') default 'user',
 	primary key(id)
 );
@@ -42,9 +42,9 @@ create table abilita (
 
 #tabella data
 create table data_completa (
-	id bigint unsigned auto_increment,
+	id bigint unsigned auto_increment,  #serve per risolvere problema legato agli entity bean
 	timestamp bigint unsigned unique,
-	anno smallint(4) not null,
+	anno smallint(4) unsigned not null,
 	mese smallint(2) unsigned not null,
 	giorno smallint(2) unsigned not null,
 	ora smallint(2) unsigned not null,
@@ -70,11 +70,12 @@ create table proposta_abilita (
 #tabella dichiarazione
 create table dichiarazione(
 	id int unsigned auto_increment,	
-	user varchar(20),
-	codice_abilita int unsigned,
-	numero_feedback int unsigned default 0,
-	media_valutazioni int unsigned default 0,
+	user varchar(20)not null,
+	codice_abilita int unsigned not null,
+	numero_feedback int unsigned default 0 not null,
+	media_valutazioni int unsigned default 0 not null,
 	primary key (id),
+	constraint dichiarazione_id unique (user, codice_abilita),
 	#se elimino (aggiorno) un utente allora elimino (aggiorno) anche le sue dichiarazioni di abilita
 	foreign key(user) references profilo(nickname)
 		on delete cascade
@@ -102,11 +103,11 @@ create table amicizia (
 		on delete cascade
 		on update cascade,
 	#non e' possibile eliminare (aggiornare) una data associata al momento di richiesta di un'amicizia
-	foreign key(momento_richiesta) references data_completa(id)
+	foreign key(momento_richiesta) references data_completa(timestamp)
 		on delete restrict
 		on update restrict,
 	#non e' possibile eliminare (aggiornare) una data associata al momento di accettazione di un'amicizia
-	foreign key(momento_accettazione) references data_completa(id)
+	foreign key(momento_accettazione) references data_completa(timestamp)
 		on delete restrict
 		on update restrict
 );
@@ -134,11 +135,11 @@ create table aiuto (
 		on delete restrict
 		on update restrict,
 	#non e' possibile eliminare (aggiornare) una data associata al momento di richiesta di un aiuto
-	foreign key(momento_richiesta) references data_completa(id)
+	foreign key(momento_richiesta) references data_completa(timestamp)
 		on delete restrict
 		on update restrict,
 	#non e' possibile eliminare (aggiornare) una data associata al momento di accettazione di un aiuto
-	foreign key(momento_accettazione) references data_completa(id)
+	foreign key(momento_accettazione) references data_completa(timestamp)
 		on delete restrict
 		on update restrict
 );
@@ -155,7 +156,7 @@ create table feedback (
 		on delete cascade
 		on update cascade,
 	#non e' possibile eliminare (aggiornare) una data associata al momento di rilascio di un feedback
-	foreign key(momento_rilascio) references data_completa(id)
+	foreign key(momento_rilascio) references data_completa(timestamp)
 		on delete restrict
 		on update restrict
 );

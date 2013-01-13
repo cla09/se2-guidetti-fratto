@@ -2,23 +2,16 @@ package session;
 
 import java.util.GregorianCalendar;
 
-import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.jboss.ejb3.annotation.RemoteBinding;
 
 import entity.Data;
-
-/**
- * Session Bean implementation class GestoreData
- */
-@Stateless
-@RemoteBinding(jndiBinding = "GestoreDataJNDI")
-public class GestoreData implements GestoreDataRemote {
-
+public class GestoreData {
+	
+	
 	@PersistenceContext(unitName = "swimv2_unit")
 	private EntityManager gestoreDB;
 	
@@ -30,7 +23,7 @@ public class GestoreData implements GestoreDataRemote {
     }
     
 
-    public Data creaData(){
+    protected Data creaData(){
     	GregorianCalendar dataAttuale = new GregorianCalendar();
     	long timestamp = dataAttuale.getTimeInMillis();
     	Data data;
@@ -60,7 +53,7 @@ public class GestoreData implements GestoreDataRemote {
     }
 
     
-    public Data recuperaData(long timestamp){
+    protected Data recuperaData(long timestamp){
     	
     	Data dataDaRecuperare;    	
     	Query q = gestoreDB.createQuery("SELECT d FROM Data d WHERE d.timestamp = :timestamp");

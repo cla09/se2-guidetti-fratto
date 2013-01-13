@@ -71,12 +71,22 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>TestSingoliMetodiGestoreData</display-name>
-    <servlet-name>TestSingoliMetodiGestoreData</servlet-name>
-    <servlet-class>servlet.TestSingoliMetodiGestoreData</servlet-class>
+    <display-name>TestSingoliMetodiGestoreUser</display-name>
+    <servlet-name>TestSingoliMetodiGestoreUser</servlet-name>
+    <servlet-class>servlet.TestSingoliMetodiGestoreUser</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>TestSingoliMetodiGestoreData</servlet-name>
-    <url-pattern>/TestSingoliMetodiGestoreData</url-pattern>
+    <servlet-name>TestSingoliMetodiGestoreUser</servlet-name>
+    <url-pattern>/TestSingoliMetodiGestoreUser</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TestSingoliMetodiGestoreAdmin</display-name>
+    <servlet-name>TestSingoliMetodiGestoreAdmin</servlet-name>
+    <servlet-class>servlet.TestSingoliMetodiGestoreAdmin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TestSingoliMetodiGestoreAdmin</servlet-name>
+    <url-pattern>/TestSingoliMetodiGestoreAdmin</url-pattern>
   </servlet-mapping>
 </web-app>

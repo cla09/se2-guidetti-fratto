@@ -18,7 +18,7 @@ public abstract class Profilo implements Serializable{
 	@Column(name = "id")
 	private long id;
 	
-	@Column(name = "nickname", unique = true)
+	@Column(name = "nickname", unique = true, nullable = false)
 	private String nickname;
 	
 	@Column(name = "password", nullable = false)
@@ -34,7 +34,7 @@ public abstract class Profilo implements Serializable{
 	private String cognome;
 	
 	@Column(name = "avatar")
-	private String avatar;		//da verificare come fare l'upload ed il recuper
+	private String avatar;		//da verificare come fare l'upload ed il recupero
 	
 	@Column(name = "citta")
 	private String citta;

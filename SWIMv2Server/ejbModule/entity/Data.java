@@ -18,7 +18,7 @@ public class Data implements Serializable{
 	private int idData;
 	
 
-	@Column(name = "timestamp")
+	@Column(name = "timestamp", unique = true, nullable = false)
 	private long timestamp;	
 	
 	@Column(name = "anno", nullable = false)

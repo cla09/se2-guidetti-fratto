@@ -13,6 +13,11 @@ insert into abilita values(default, 'meccanico', null, 'pulizia carburatore auto
 
 #select * from abilita;
 
+#Inserimento tuple tabella data_completa
+insert into data_completa values(default, 1358093818355, 2013, 01, 13, 17, 16, 58);
+insert into data_completa values(default, 1358094095242, 2013, 01, 13, 17, 21, 35);
+insert into data_completa values(default, 1358094150373, 2013, 01, 13, 17, 22, 30);
+
 
 #Inserimento tuple tabella proposta abilita
 insert into proposta_abilita values(default, 'giocoliere', 'per feste private', default, 'cla09');
@@ -30,19 +35,19 @@ insert into dichiarazione values(default,'franco', 2, default, default);
 #select * from dichiarazione;
 
 #Inserimento tuple tabella amicizia
-insert into amicizia values(default, 'cla09', 'kikka', '2013-01-01 12:00:01', '2013-01-08 11:00:01');
+insert into amicizia values(default, 'cla09', 'kikka', 1358093818355, 1358094095242);
 
 #select * from amicizia;
 
 #Inserimento tuple tabella aiuto
-insert into aiuto values(default, 'sono disperata', 'kikka', 'cla09', 1, '2013-01-01 12:00:01', '2013-01-08 11:00:01');
-insert into aiuto values(default, 'aiutami', 'cla09', 'kikka', 3, '2013-01-01 12:00:01', '2013-01-08 11:00:01');
-insert into aiuto values(default, 'mi serve una mano', 'euge', 'franco', 2, '2013-01-01 12:00:01', '2013-01-08 11:00:01');
-insert into aiuto values(default, 'mi aiuti?', 'euge', 'franco', 2, '2013-01-08 11:00:01', null);
+insert into aiuto values(default, 'sono disperata', 'kikka', 'cla09', 1, 1358093818355, 1358094095242);
+insert into aiuto values(default, 'aiutami', 'cla09', 'kikka', 3, 1358093818355, 1358094150373);
+insert into aiuto values(default, 'mi serve una mano', 'euge', 'franco', 2, 1358094095242, 1358094150373);
+insert into aiuto values(default, 'mi aiuti?', 'euge', 'franco', 2, 1358093818355, null);
 
 #select * from aiuto;
 
 #Inserimento tabella feedback
-insert into feedback values(1, 4, 'ottimo lavoro', '2013-01-08 11:00:01');
+insert into feedback values(1, 4, 'ottimo lavoro', 1358094150373);
 
 #select * from feedback;
