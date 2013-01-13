@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -10,6 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import session.GestoreAbilitaRemote;
 import session.GestoreProfiloRemote;
+import session.GestoreUserRemote;
+import utility.Comunicazione;
+import utility.Messaggio;
+import utility.TipoMessaggio;
 
 public class Registrazione extends HttpServlet {
 	
@@ -27,10 +33,28 @@ public class Registrazione extends HttpServlet {
 		try {
 			Context context = new InitialContext();
 			GestoreProfiloRemote gestoreProfilo = (GestoreProfiloRemote) context.lookup("GestoreProfilo/remote");
-			/* eseguire un controllo sull'indirizzo email */
-			/* if( !(controllo disponibilità nickname) ) {
-				tornare alla Home Page con messaggio di nickname non disponibile
-			} */
+			String email = (String) request.getAttribute("rEmail");
+			Pattern pattern = Pattern.compile(Comunicazione.EMAIL_PATTERN);
+			Matcher matcher = pattern.matcher(email);
+			if(!matcher.find()) {
+				Messaggio messaggio = new Messaggio(TipoMessaggio.ERRORE, Comunicazione.EMAIL_NON_VALIDA);
+				// inoltrare il messaggio alla Home Page;
+			}
+			String nickname = (String) request.getAttribute("rNickname");
+			if(!gestoreProfilo.controllaDisponibilitaNickname(nickname)) {
+				Messaggio messaggio = new Messaggio(TipoMessaggio.AVVISO, Comunicazione.NICKNAME_NON_LIBERO);
+				// inoltrare il messaggio alla Home Page;
+			}
+			GestoreUserRemote gestoreUser = (GestoreUserRemote) context.lookup("GestoreUser/remote");
+			String nome = (String) request.getAttribute("rNome");
+			String cognome = (String) request.getAttribute("rCognome");
+			String sesso = (String) request.getAttribute("rSesso");
+			int annoNascita = (Integer) request.getAttribute("rAnnoNascita");
+			String città = (String) request.getAttribute("rCittà");
+			String password = (String) request.getAttribute("rPassword");
+			String avatar = "";
+			gestoreUser.registra(nickname, password, email, nome, cognome, avatar, città, sesso, annoNascita);
+			/* inltrare il nickname alla prossima pagina jsp */
 			GestoreAbilitaRemote gestoreAbilita = (GestoreAbilitaRemote) context.lookup("GestoreAbilita/remote");
 			/* recuperare le abilità disponibili nel sistema */
 			/* inoltrare tutti i parametri ricevuti alla prossima pagina jsp */
