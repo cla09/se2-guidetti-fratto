@@ -1,27 +1,29 @@
 @CHARSET "ISO-8859-1";
 
+body {
+	font-family: Arial;
+}
+
 #pagina {
 	border: 1px solid grey;
-	border-radius: 10px;
+	border-radius: 20px;
 	overflow: auto;
 	width: 900px;
 	margin: auto;
 	margin-top: 30px;
+	padding: 15px;
 }
 
 #logo {
 	text-align: center;
-	margin-top: 15px;
 }
 
 #boxLeft, #boxRight {
 	border: 1px solid grey;
-	border-radius: 10px;
-	width: 350px;
-	float: right;
+	border-radius: 15px;
+	width: 360px;
 	padding: 10px;
-	padding-right: 15px;
-	margin: 30px;
+	margin: 15px;
 	background-color: #CFE7F5;
 }
 
@@ -36,14 +38,23 @@
 #titoloBox {
 	border: 1px solid grey;
 	border-radius: 5px;
-	text-align: center;
+	padding: 5px;
 	background-color: #FFFF99;
+	font-style: italic;
+	font-weight: bold;
 }
 
 #informazioniBox {
 	text-align: right;
+	margin-right: 15px;
 }
 
 #informazioniBox input, select {
 	width: 220px;
+}
+
+#pulsante {
+	width: 150px;
+	height: 30px;
+	font-weight: bold;
 }
