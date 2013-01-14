@@ -41,10 +41,10 @@ public class Registrazione extends HttpServlet {
 				// inoltrare il messaggio alla Home Page;
 			}
 			String nickname = (String) request.getAttribute("rNickname");
-			if(!gestoreProfilo.controllaDisponibilitaNickname(nickname)) {
+			/*if(!gestoreProfilo.controllaDisponibilitaNickname(nickname)) {
 				Messaggio messaggio = new Messaggio(TipoMessaggio.AVVISO, Comunicazione.NICKNAME_NON_LIBERO);
 				// inoltrare il messaggio alla Home Page;
-			}
+			}*/
 			GestoreUserRemote gestoreUser = (GestoreUserRemote) context.lookup("GestoreUser/remote");
 			String nome = (String) request.getAttribute("rNome");
 			String cognome = (String) request.getAttribute("rCognome");
