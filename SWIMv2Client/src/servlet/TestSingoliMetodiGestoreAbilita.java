@@ -56,8 +56,8 @@ public class TestSingoliMetodiGestoreAbilita extends HttpServlet {
 			}
 			
 			//metodo funzionante
-			 * 
-			*/
+			 */
+			
 		}
 		catch (Exception e) {
 			// TODO Auto-generated catch block

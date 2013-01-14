@@ -64,8 +64,8 @@ public class TestSingoliMetodiGestoreUser extends HttpServlet {
 			}
 
 			//metodo funzionante
-			*/
 			
+			*/
 			
 			/*
 			 * METODO registra
@@ -117,7 +117,7 @@ public class TestSingoliMetodiGestoreUser extends HttpServlet {
 			 * test1: ottenere tutte le informazioni legate ad uno user esistente
 			 * test2: messaggio di errore se lo user non esiste
 			 * 
-			 */
+			 
 			String nickname1;
 			String nickname2;
 			User user;
@@ -138,7 +138,6 @@ public class TestSingoliMetodiGestoreUser extends HttpServlet {
 	    							"\nsesso :" + user.getSesso() +
 	    							"\nanno nascita: " + user.getAnnoNascita()
 	    							);
-	    		System.out.println("il numero di proposta abilita: " + user.getProposteAbilita().size());
 			}
 			else{
 				System.out.println("non esiste nessun utente");
@@ -165,6 +164,7 @@ public class TestSingoliMetodiGestoreUser extends HttpServlet {
 			
 			//metodo funzionante: test superato
 	    	
+			*/
 			
 			
 			/*
@@ -217,7 +217,7 @@ public class TestSingoliMetodiGestoreUser extends HttpServlet {
 			
 			risultatoEliminazione = gestoreUserRemoto.confermaCancellazioneUser(nickname);
 			
-			// @@@@@@@@@@@@@@@ DA TESTARE @@@@@@@@@@@@@@@@@@@@
+			// metodo funzionante (al momento)
 			 * 
 			 * 
 			 */

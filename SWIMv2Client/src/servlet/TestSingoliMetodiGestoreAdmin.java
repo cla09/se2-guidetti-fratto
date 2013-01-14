@@ -58,10 +58,10 @@ public class TestSingoliMetodiGestoreAdmin extends HttpServlet {
     							);
     		
     		//metodo funzionante: test superato
-    		*/
+    		/*
     		
     		/*
-			 * METODO: modificaInformazioniUser
+			 * METODO: modificaInformazioniAdmin
 			 * 
 			 * test: modifico la password, la mail dell'admin
 			 

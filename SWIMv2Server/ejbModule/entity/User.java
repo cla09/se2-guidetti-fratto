@@ -44,6 +44,7 @@ public class User extends Profilo implements Serializable{
 	
 	//Lo user non è proprietario della relazione che è presente con le proposte di abilità	
 	
+	/*
 	@OneToMany(mappedBy = "userProponente", cascade = CascadeType.REMOVE)  //se cancello lo User elimino anche tutte le proposta ad esso associate
 	private List<PropostaAbilita> proposteAbilita;
 	
@@ -58,6 +59,7 @@ public class User extends Profilo implements Serializable{
 	
 	@OneToMany(mappedBy = "userDestinatarioAiuto", cascade = CascadeType.REMOVE)
 	private List<Aiuto> richiesteAiutoRicevute;
+	*/
 
 	/*
 	 * metodo costruttore
@@ -80,7 +82,7 @@ public class User extends Profilo implements Serializable{
 	public void setDichiarazioni(List<Dichiarazione> dichiarazioni) {
 		this.dichiarazioni = dichiarazioni;
 	}
-	*/
+
 
 	public List<PropostaAbilita> getProposteAbilita() {
 		return proposteAbilita;
@@ -122,7 +124,9 @@ public class User extends Profilo implements Serializable{
 	public void setRichiesteAiutoRicevute(List<Aiuto> richiesteAiutoRicevute) {
 		this.richiesteAiutoRicevute = richiesteAiutoRicevute;
 	}
-
+	
+	*/
+	
 	public String getSesso() {
 		return sesso;
 	}

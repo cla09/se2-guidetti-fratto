@@ -26,6 +26,8 @@ public class GestorePropostaAbilita implements GestorePropostaAbilitaRemote {
 	public GestorePropostaAbilita() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	//da riverificare tutti!!!!!!!!!!
 
 	@Override
 	public void inviaProposta(String nickUserProponente, String nomeAbilitaProposta, String descrizioneAbilitaProposta){
@@ -38,11 +40,26 @@ public class GestorePropostaAbilita implements GestorePropostaAbilitaRemote {
 		propostaAbilita.setDefaultStatoProposta();
 
 		//recupero lo user che ha proposto la nuova abilita
-		User userProponente = gestoreDB.find(User.class, nickUserProponente);
-
+		User userProponente = getUser(nickUserProponente);
+		System.out.println("utente recuperato: "+ userProponente.getNome());
 		propostaAbilita.setUserProponenteAbilita(userProponente);
 
 		gestoreDB.persist(propostaAbilita);
+	}
+	
+	private User getUser(String nickname){
+		User userDaRecuperare;
+
+		Query q = gestoreDB.createQuery("SELECT u FROM User u WHERE u.nickname = :nickname");
+		q.setParameter("nickname", nickname);
+
+		try{
+			userDaRecuperare = (User) q.getSingleResult();
+			return userDaRecuperare;
+		}
+		catch (NoResultException e) {
+			return null;
+		}
 	}
 
 

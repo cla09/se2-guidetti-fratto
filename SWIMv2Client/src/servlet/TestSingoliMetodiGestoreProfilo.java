@@ -105,7 +105,7 @@ public class TestSingoliMetodiGestoreProfilo extends HttpServlet {
 				System.out.println("nickname: " + nicknameKO + "  password: " + passwordOK + " sono credenziali valide");
 			}
 			else{
-				System.out.println("nickname: " + nicknameKO + "  password: " + passwordOK + "sono non credenziali valide");
+				System.out.println("nickname: " + nicknameKO + "  password: " + passwordOK + " sono non credenziali valide");
 			}
 			
 			//test3
@@ -117,7 +117,7 @@ public class TestSingoliMetodiGestoreProfilo extends HttpServlet {
 				System.out.println("nickname: " + nicknameOK + "  password: " + passwordKO + " sono non credenziali valide");
 			}
 			
-			* METODO TESTATO E FUNZIONANTE
+			 // METODO TESTATO E FUNZIONANTE
 			*/
 		}
 		catch (Exception e) {
