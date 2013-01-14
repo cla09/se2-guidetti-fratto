@@ -34,9 +34,19 @@ public class Registrazione extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			Context context = new InitialContext();
-			RequestDispatcher dispatcher;
 			GestoreUserRemote gestoreUser = (GestoreUserRemote) context.lookup("GestoreUserJNDI");
+			GestoreAbilitaRemote gestoreAbilita = (GestoreAbilitaRemote) context.lookup("GestoreAbilitaJNDI");
+			RequestDispatcher dispatcher;
+			String nome = (String) request.getParameter("rNome");
+			String cognome = (String) request.getParameter("rCognome");
+			String sesso = (String) request.getParameter("rSesso");
+			int annoNascita = Integer.parseInt(request.getParameter("rAnnoNascita"));
+			String citta = (String) request.getParameter("rCitta");
+			String nickname = (String) request.getParameter("rNickname");
+			String password = (String) request.getParameter("rPassword");
 			String email = (String) request.getParameter("rEmail");
+			String avatar = "";
+			
 			Pattern pattern = Pattern.compile(Comunicazione.EMAIL_PATTERN);
 			Matcher matcher = pattern.matcher(email);
 			if(!matcher.find()) {
@@ -44,31 +54,22 @@ public class Registrazione extends HttpServlet {
 				request.setAttribute("messaggio", messaggio);
 				dispatcher = request.getRequestDispatcher("index.jsp");
 				dispatcher.forward(request, response);
-			}
-			String nickname = (String) request.getParameter("rNickname");
-			if(!gestoreUser.controllaDisponibilitaNickname(nickname)) {
+			} else if(!gestoreUser.controllaDisponibilitaNickname(nickname)) {
 				Messaggio messaggio = new Messaggio(TipoMessaggio.AVVISO, Comunicazione.NICKNAME_NON_LIBERO);
 				request.setAttribute("messaggio", messaggio);
 				dispatcher = request.getRequestDispatcher("index.jsp");
 				dispatcher.forward(request, response);
+			} else {
+				gestoreUser.registra(nickname, password, email, nome, cognome, avatar, citta, sesso, annoNascita);
+				request.setAttribute("nickname", nickname);
+				List<Abilita> abilitaDisponibili = gestoreAbilita.recuperaAbilitaSistema();
+				request.setAttribute("abilitaDisponibili", abilitaDisponibili);
+				dispatcher = request.getRequestDispatcher("registrazione.jsp");
+				dispatcher.forward(request, response);
 			}
-			String nome = (String) request.getParameter("rNome");
-			String cognome = (String) request.getParameter("rCognome");
-			String sesso = (String) request.getParameter("rSesso");
-			int annoNascita = Integer.parseInt(request.getParameter("rAnnoNascita"));
-			String citta = (String) request.getParameter("rCitta");
-			String password = (String) request.getParameter("rPassword");
-			String avatar = "";
-			gestoreUser.registra(nickname, password, email, nome, cognome, avatar, citta, sesso, annoNascita);
-			request.setAttribute("nickname", nickname);
-			GestoreAbilitaRemote gestoreAbilita = (GestoreAbilitaRemote) context.lookup("GestoreAbilitaJNDI");
-			List<Abilita> abilitaDisponibili = gestoreAbilita.recuperaAbilitaSistema();
-			request.setAttribute("abilitaDisponibili", abilitaDisponibili);
-			dispatcher = request.getRequestDispatcher("registrazione.jsp");
-			dispatcher.forward(request, response);
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
 	}
-
+	
 }
