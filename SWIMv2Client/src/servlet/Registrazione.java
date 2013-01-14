@@ -12,7 +12,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import entity.Abilita;
 import session.GestoreAbilitaRemote;
 import session.GestoreUserRemote;
@@ -36,8 +35,8 @@ public class Registrazione extends HttpServlet {
 		try {
 			Context context = new InitialContext();
 			RequestDispatcher dispatcher;
-			GestoreUserRemote gestoreUser = (GestoreUserRemote) context.lookup("GestoreUser/remote");
-			String email = (String) request.getAttribute("rEmail");
+			GestoreUserRemote gestoreUser = (GestoreUserRemote) context.lookup("GestoreUserJNDI");
+			String email = (String) request.getParameter("rEmail");
 			Pattern pattern = Pattern.compile(Comunicazione.EMAIL_PATTERN);
 			Matcher matcher = pattern.matcher(email);
 			if(!matcher.find()) {
@@ -46,23 +45,23 @@ public class Registrazione extends HttpServlet {
 				dispatcher = request.getRequestDispatcher("index.jsp");
 				dispatcher.forward(request, response);
 			}
-			String nickname = (String) request.getAttribute("rNickname");
+			String nickname = (String) request.getParameter("rNickname");
 			if(!gestoreUser.controllaDisponibilitaNickname(nickname)) {
 				Messaggio messaggio = new Messaggio(TipoMessaggio.AVVISO, Comunicazione.NICKNAME_NON_LIBERO);
 				request.setAttribute("messaggio", messaggio);
 				dispatcher = request.getRequestDispatcher("index.jsp");
 				dispatcher.forward(request, response);
 			}
-			String nome = (String) request.getAttribute("rNome");
-			String cognome = (String) request.getAttribute("rCognome");
-			String sesso = (String) request.getAttribute("rSesso");
-			int annoNascita = (Integer) request.getAttribute("rAnnoNascita");
-			String citta = (String) request.getAttribute("rCitta");
-			String password = (String) request.getAttribute("rPassword");
+			String nome = (String) request.getParameter("rNome");
+			String cognome = (String) request.getParameter("rCognome");
+			String sesso = (String) request.getParameter("rSesso");
+			int annoNascita = Integer.parseInt(request.getParameter("rAnnoNascita"));
+			String citta = (String) request.getParameter("rCitta");
+			String password = (String) request.getParameter("rPassword");
 			String avatar = "";
 			gestoreUser.registra(nickname, password, email, nome, cognome, avatar, citta, sesso, annoNascita);
 			request.setAttribute("nickname", nickname);
-			GestoreAbilitaRemote gestoreAbilita = (GestoreAbilitaRemote) context.lookup("GestoreAbilita/remote");
+			GestoreAbilitaRemote gestoreAbilita = (GestoreAbilitaRemote) context.lookup("GestoreAbilitaJNDI");
 			List<Abilita> abilitaDisponibili = gestoreAbilita.recuperaAbilitaSistema();
 			request.setAttribute("abilitaDisponibili", abilitaDisponibili);
 			dispatcher = request.getRequestDispatcher("registrazione.jsp");

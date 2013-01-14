@@ -35,7 +35,7 @@
 					<div id="titoloBox">
 						<center>Effettua la registrazione</center>
 					</div>
-					<form action="" method="post">
+					<form action="Registrazione" method="post">
 						<div id="informazioniBox">
 							<p>
 								<label for="rNome">Nome:</label>
@@ -59,14 +59,14 @@
 										GregorianCalendar now = new GregorianCalendar();
 										for(int i = now.get(GregorianCalendar.YEAR); i > 1850; i--) {
 									%>
-											<option value=" <%= i %> "><%= i %></option>
+											<option value="<%= i %>"><%= i %></option>
 									<%
 										}
 									%>
 								</select>
 							</p>
 							<p>
-								<label for="rCitta">Città:</label>
+								<label for="rCitta">Citt&agrave;:</label>
 								<select id="rCitta" name="rCitta">
 									<%
 									    String città = null;
@@ -99,11 +99,7 @@
 							</p>
 							<p>
 								<label for="rEmail">Email:</label>
-								<input id="rEmail" name="rEmail" type="email" maxlength="255" required="required">
-							</p>
-							<p>
-								<label for="rAvatar">Avatar:</label>
-								<input id="rAvatar" name="rAvatar" type="file" accept="image/*">
+								<input id="rEmail" name="rEmail" type="text" maxlength="255" required="required">
 							</p>
 						</div>
 						<center>
