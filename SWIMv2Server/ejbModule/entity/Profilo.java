@@ -5,7 +5,9 @@ import javax.persistence.*;
 
 
 
+
 @Entity
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "ruolo", discriminatorType = DiscriminatorType.STRING)
 @Table(name = "profilo")
 public abstract class Profilo implements Serializable{

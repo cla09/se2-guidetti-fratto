@@ -42,7 +42,7 @@ public class TestSingoliMetodiGestoreUser extends HttpServlet {
 			System.out.println("****** sono nella servlet--- collegamento stabilito **********");
 
 			/*
-			 * METODO: controllaDisponibilitaNickname  (spostato in user)
+			 * METODO: controllaDisponibilitaNickname 
 			 * 
 			 * test1: verificare che un nick non esiste
 			 * test2: verificare che un nick è già utilizzato
@@ -117,7 +117,7 @@ public class TestSingoliMetodiGestoreUser extends HttpServlet {
 			 * test1: ottenere tutte le informazioni legate ad uno user esistente
 			 * test2: messaggio di errore se lo user non esiste
 			 * 
-			 
+			 */
 			String nickname1;
 			String nickname2;
 			User user;
@@ -138,6 +138,7 @@ public class TestSingoliMetodiGestoreUser extends HttpServlet {
 	    							"\nsesso :" + user.getSesso() +
 	    							"\nanno nascita: " + user.getAnnoNascita()
 	    							);
+	    		System.out.println("il numero di proposta abilita: " + user.getProposteAbilita().size());
 			}
 			else{
 				System.out.println("non esiste nessun utente");
@@ -164,7 +165,7 @@ public class TestSingoliMetodiGestoreUser extends HttpServlet {
 			
 			//metodo funzionante: test superato
 	    	
-			*/
+			
 			
 			/*
 			 * METODO: modificaInformazioniUser
@@ -210,13 +211,16 @@ public class TestSingoliMetodiGestoreUser extends HttpServlet {
 			 * METODO: confermaCancellazioneUser
 			 * 
 			 * test: elimino lo user franco
-			 */
+			 
 			boolean risultatoEliminazione;
 			String nickname = "franco";
 			
 			risultatoEliminazione = gestoreUserRemoto.confermaCancellazioneUser(nickname);
 			
 			// @@@@@@@@@@@@@@@ DA TESTARE @@@@@@@@@@@@@@@@@@@@
+			 * 
+			 * 
+			 */
 		}
 		catch (Exception e) {
 			// TODO Auto-generated catch block

@@ -16,15 +16,15 @@ import entity.PropostaAbilita;
 import session.GestorePropostaAbilitaRemote;
 
 /**
- * Servlet implementation class TestSingoliMetodiGestorePropostaAbilitaServlet
+ * Servlet implementation class TestSingoliMetodiGestorePropostaAbilita
  */
-public class TestSingoliMetodiGestorePropostaAbilitaServlet extends HttpServlet {
+public class TestSingoliMetodiGestorePropostaAbilita extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */ 
-	public TestSingoliMetodiGestorePropostaAbilitaServlet() {
+	public TestSingoliMetodiGestorePropostaAbilita() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -41,7 +41,7 @@ public class TestSingoliMetodiGestorePropostaAbilitaServlet extends HttpServlet 
 
 			System.out.println("****** sono nella servlet--- collegamento stabilito **********");
 
-			/*
+			
 			//boolean inviaProposta(String nickUserProponente, String nomeAbilitaProposta, String descrizioneAbilitaProposta)
 			System.out.println("######## verifico il funzionamento dell'inserimento di una nuova proposta ########");
 			//parametri da inserire:
@@ -55,8 +55,6 @@ public class TestSingoliMetodiGestorePropostaAbilitaServlet extends HttpServlet 
 
 			// METODO FUNZIONA CORRETTAMENTE
 
-			*/
-			
 			/*
 			//List<PropostaAbilita> recuperaProposteAbilitaNonVisionate();
 			System.out.println("\n\n\n######## verifico il funzionamento del recupero delle proposte non visionate ########\n");
@@ -77,9 +75,7 @@ public class TestSingoliMetodiGestorePropostaAbilitaServlet extends HttpServlet 
 
 			// METODO FUNZIONA CORRETTAMENTE
 
-			*/
 			
-			/*
 			//List<PropostaAbilita> recuperaProposteAbilitaVisionate();
 			System.out.println("\n\n\n######## verifico il funzionamento del recupero delle proposte visionate ########\n");
 
@@ -99,9 +95,6 @@ public class TestSingoliMetodiGestorePropostaAbilitaServlet extends HttpServlet 
 
 			// METODO FUNZIONA CORRETTAMENTE
 
-			*/
-			
-			/*
 			//boolean visionaProposta(int idProposta) throws DBException
 			System.out.println("######## verifico il funzionamento della visione di una nuova proposta ########");
 			//parametri da inserire:
@@ -112,10 +105,8 @@ public class TestSingoliMetodiGestorePropostaAbilitaServlet extends HttpServlet 
 			System.out.println("\n\n@@@@@@ modifica completata correttamente @@@@@@@\n\n");
 
 			// METODO FUNZIONA CORRETTAMENTE
-			*/
-
-
-			/*
+		
+			
 			//boolean cancellaProposta(int idProposta) throws DBException;
 			System.out.println("######## verifico il funzionamento dell'eliminazione di una nuova proposta ########");
 			//parametri da inserire:
@@ -128,7 +119,6 @@ public class TestSingoliMetodiGestorePropostaAbilitaServlet extends HttpServlet 
 			// METODO FUNZIONA CORRETTAMENTE
 
 			*/
-
 
 		}
 		catch (Exception e) {

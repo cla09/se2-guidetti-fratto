@@ -30,7 +30,7 @@ public class Amicizia implements Serializable{
 	@ManyToOne(cascade = CascadeType.PERSIST)	//se elimino un'amicizia la data associata al momento di accettazione deve continuare ad esistere (ci potrebbe essere qualche altro evento con quella data)
 	@JoinColumn(name = "momento_accettazione")
 	private Data momentoAccettazioneAmicizia;
-
+	
 	
 	/*
 	 * costruttore di default

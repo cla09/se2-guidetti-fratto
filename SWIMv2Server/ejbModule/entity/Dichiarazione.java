@@ -13,7 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-
 @Entity
 @Table(name = "dichiarazione", uniqueConstraints = {@UniqueConstraint(columnNames = {"user", "codice_abilita" } ) } )
 public class Dichiarazione implements Serializable{
@@ -27,6 +26,12 @@ public class Dichiarazione implements Serializable{
 	@Column(name = "id")
 	private int id;
 	
+	@Column(name = "numero_feedback")
+	private int numeroFeedback;
+	
+	@Column(name = "media_valutazioni")
+	private int mediaValutazioni;
+	
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "user", nullable = false)
@@ -36,11 +41,7 @@ public class Dichiarazione implements Serializable{
 	@JoinColumn(name = "codice_abilita", nullable = false)
 	private Abilita abilitaDichiarata;
 	
-	@Column(name = "numero_feedback")
-	private int numeroFeedback;
 	
-	@Column(name = "media_valutazioni")
-	private int mediaValutazioni;
 
 	public int getIdDichiarazione() {
 		return id;

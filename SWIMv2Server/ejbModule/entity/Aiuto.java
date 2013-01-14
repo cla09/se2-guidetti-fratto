@@ -15,7 +15,7 @@ public class Aiuto implements Serializable{
 	private int codiceAiuto;
 	
 	@Column(name = "descrizione", nullable = false)
-	private String descrizioneAiuto;
+	private String descrizioneAiuto;	
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)	//se elimino un aiuto lo user richiedente deve continuare ad esistere
 	@JoinColumn(name = "user_richiedente", nullable = false)
@@ -37,9 +37,11 @@ public class Aiuto implements Serializable{
 	@JoinColumn(name = "momento_accettazione")
 	private Data momentoAccettazioneAiuto;
 
+	
 	@OneToOne(cascade = CascadeType.REMOVE)		//se elimino un aiuto il suo feedback deve essere eliminato
 	private Feedback feedback;
-
+	
+	
 	/*
 	 * costruttore di default
 	 */
@@ -107,7 +109,8 @@ public class Aiuto implements Serializable{
 	public void setMomentoAccettazioneAiuto(Data momentoAccettazioneAiuto) {
 		this.momentoAccettazioneAiuto = momentoAccettazioneAiuto;
 	}
-
+	
+	
 	public Feedback getFeedbackAiuto() {
 		return feedback;
 	}
@@ -115,6 +118,7 @@ public class Aiuto implements Serializable{
 	public void setFeedbackAiuto(Feedback feedback) {
 		this.feedback = feedback;
 	}
+	
 	
 	/*
 	 * *******************************
@@ -125,36 +129,36 @@ public class Aiuto implements Serializable{
 	/*
 	 * codice sql:
 	 * 
-	 * #tabella aiuto
-	create table aiuto (
-		codice int unsigned auto_increment primary key,
-		descrizione text not null,
-		user_richiedente varchar(15) not null,
-		user_destinatario varchar(15) not null,
-		codice_abilita smallint unsigned not null,
-		momento_richiesta datetime not null,
-		momento_accettazione datetime,
-		#se elimino (aggiorno) lo user richiedente allora tutte le sue richieste di aiuto devono essere eliminate(aggiornate)
-		foreign key(user_richiedente) references profilo(nickname)
-			on delete cascade
-			on update cascade,
-		#se elimino (aggiorno) lo user destiatario allora tutte le sue richieste di aiuto devono essere eliminate(aggiornate)
-		foreign key(user_destinatario) references profilo(nickname)
-			on delete cascade
-			on update cascade,
-		#non e' possibile eliminare (aggiornare) l'abilita oggetto di una richiesta di aiuto
-		foreign key(codice_abilita) references abilita(codice)
-			on delete restrict
-			on update restrict,
-		#non e' possibile eliminare (aggiornare) una data associata al momento di richiesta di un aiuto
-		foreign key(momento_richiesta) references data_completa(ts)
-			on delete restrict
-			on update restrict,
-		#non e' possibile eliminare (aggiornare) una data associata al momento di accettazione di un aiuto
-		foreign key(momento_accettazione) references data_completa(ts)
-			on delete restrict
-			on update restrict
-		);
+	 * create table aiuto (
+	codice int unsigned auto_increment,
+	descrizione varchar(140) not null,
+	user_richiedente varchar(20) not null,
+	user_destinatario varchar(20) not null,
+	codice_abilita int unsigned not null,
+	momento_richiesta bigint unsigned not null,
+	momento_accettazione bigint unsigned,
+	primary key (codice),
+	#se elimino (aggiorno) lo user richiedente allora tutte le sue richieste di aiuto devono essere eliminate(aggiornate)
+	foreign key(user_richiedente) references profilo(nickname)
+		on delete cascade
+		on update cascade,
+	#se elimino (aggiorno) lo user destiatario allora tutte le sue richieste di aiuto devono essere eliminate(aggiornate)
+	foreign key(user_destinatario) references profilo(nickname)
+		on delete cascade
+		on update cascade,
+	#non e' possibile eliminare (aggiornare) l'abilita oggetto di una richiesta di aiuto
+	foreign key(codice_abilita) references abilita(codice)
+		on delete restrict
+		on update restrict,
+	#non e' possibile eliminare (aggiornare) una data associata al momento di richiesta di un aiuto
+	foreign key(momento_richiesta) references data_completa(timestamp)
+		on delete restrict
+		on update restrict,
+	#non e' possibile eliminare (aggiornare) una data associata al momento di accettazione di un aiuto
+	foreign key(momento_accettazione) references data_completa(timestamp)
+		on delete restrict
+		on update restrict
+);
 
 	 */
 }

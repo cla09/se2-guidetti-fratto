@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,6 +34,7 @@ public class PropostaAbilita implements Serializable {
 	@Column(name = "stato_richiesta", nullable = false)
 	private String statoProposta;
 	
+
 	//PropostaAbilita è proprietario della relazione con lo User
 	@ManyToOne(cascade = CascadeType.PERSIST)		//se elimino proposta lo user associato non viene cancellato
 	@JoinColumn(name = "user_proponente")

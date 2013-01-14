@@ -33,14 +33,17 @@ public class User extends Profilo implements Serializable{
 	@Column(name = "anno_nascita")
 	private int annoNascita;
 	
+	/*
 	@OneToMany(mappedBy = "userDichiarante", cascade = CascadeType.REMOVE)
 	private List<Dichiarazione> dichiarazioni;
+	*/
 	
 	/*
 	 * ***** da verificare il funzionamento del cascade: in questo momento è interpretato così: se cancello lo user succede ... *************
 	 */
 	
 	//Lo user non è proprietario della relazione che è presente con le proposte di abilità	
+	
 	@OneToMany(mappedBy = "userProponente", cascade = CascadeType.REMOVE)  //se cancello lo User elimino anche tutte le proposta ad esso associate
 	private List<PropostaAbilita> proposteAbilita;
 	
@@ -69,6 +72,7 @@ public class User extends Profilo implements Serializable{
 	 *********************************
 	 */	
 	
+	/*
 	public List<Dichiarazione> getAbilitaDichiarate() {
 		return dichiarazioni;
 	}
@@ -76,11 +80,13 @@ public class User extends Profilo implements Serializable{
 	public void setDichiarazioni(List<Dichiarazione> dichiarazioni) {
 		this.dichiarazioni = dichiarazioni;
 	}
+	*/
 
 	public List<PropostaAbilita> getProposteAbilita() {
 		return proposteAbilita;
 	}
 
+	
 	public void setProposteAbilita(List<PropostaAbilita> proposteAbilita) {
 		this.proposteAbilita = proposteAbilita;
 	}

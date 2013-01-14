@@ -28,7 +28,7 @@ public class GestorePropostaAbilita implements GestorePropostaAbilitaRemote {
 	}
 
 	@Override
-	public void inviaProposta(String nickUserProponente,	String nomeAbilitaProposta, String descrizioneAbilitaProposta){
+	public void inviaProposta(String nickUserProponente, String nomeAbilitaProposta, String descrizioneAbilitaProposta){
 
 		PropostaAbilita propostaAbilita = new PropostaAbilita();
 

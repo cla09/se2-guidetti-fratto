@@ -30,9 +30,10 @@ public class Abilita implements Serializable{
 	private List<User> utentiDichiaranti;
 	*/
 	
+	/*
 	@OneToMany(mappedBy = "abilitaDichiarata", cascade = CascadeType.REMOVE)
 	private List<Dichiarazione> dichiarazioni;
-
+	*/
 	/*
 	 * costruttore di default
 	 */
@@ -86,7 +87,8 @@ public class Abilita implements Serializable{
 		this.utentiDichiaranti = utentiDichiaranti;
 	}
 	*/
-
+	
+	/*
 	public List<Dichiarazione> getDichiarazioni() {
 		return dichiarazioni;
 	}
@@ -94,6 +96,7 @@ public class Abilita implements Serializable{
 	public void setDichiarazioni(List<Dichiarazione> dichiarazioni) {
 		this.dichiarazioni = dichiarazioni;
 	}
+	*/
 	
 	/*
 	 * *******************************

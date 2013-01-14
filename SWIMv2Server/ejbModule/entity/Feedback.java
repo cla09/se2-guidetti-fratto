@@ -40,12 +40,12 @@ public class Feedback implements Serializable{
 	@GeneratedValue(generator = "aiutoPrimaryKey")
 	*/
 	@Column(name = "codice_aiuto", unique = true)
-    private int codiceFeedback;
+    private int codiceAiuto;
     
     @OneToOne(mappedBy = "feedback")	
     @PrimaryKeyJoinColumn(name = "codice_aiuto")
     private Aiuto aiuto;
-        
+            
 	@Column(name = "valutazione_numerica", nullable = false)
 	private short valutazioneNumericaFeedback;
 	
@@ -55,6 +55,7 @@ public class Feedback implements Serializable{
 	@ManyToOne(cascade = CascadeType.PERSIST)	//se elimino un feedback la data associata al momento di rilascio deve continuare ad esistere (ci potrebbe essere qualche altro evento con quella data)
 	@JoinColumn(name = "momento_rilascio")
 	private Data momentoRilascioFeedback;
+	
 
 	
 
@@ -72,11 +73,11 @@ public class Feedback implements Serializable{
 	 */
 	
 	public int getCodiceFeedback() {
-		return codiceFeedback;
+		return codiceAiuto;
 	}
 
 	public void setCodiceFeedback(int codiceFeedback) {
-		this.codiceFeedback = codiceFeedback;
+		this.codiceAiuto = codiceFeedback;
 	}
 
 	public Aiuto getAiutoAssociato() {
@@ -87,6 +88,7 @@ public class Feedback implements Serializable{
 		this.aiuto = aiuto;
 	}
 
+	
 	public short getValutazioneNumericaFeedback() {
 		return valutazioneNumericaFeedback;
 	}

@@ -11,13 +11,13 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>TestSingoliMetodiGestorePropostaAbilitaServlet</display-name>
-    <servlet-name>TestSingoliMetodiGestorePropostaAbilitaServlet</servlet-name>
-    <servlet-class>servlet.TestSingoliMetodiGestorePropostaAbilitaServlet</servlet-class>
+    <display-name>TestSingoliMetodiGestorePropostaAbilita</display-name>
+    <servlet-name>TestSingoliMetodiGestorePropostaAbilita</servlet-name>
+    <servlet-class>servlet.TestSingoliMetodiGestorePropostaAbilita</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>TestSingoliMetodiGestorePropostaAbilitaServlet</servlet-name>
-    <url-pattern>/TestSingoliMetodiGestorePropostaAbilitaServlet</url-pattern>
+    <servlet-name>TestSingoliMetodiGestorePropostaAbilita</servlet-name>
+    <url-pattern>/TestSingoliMetodiGestorePropostaAbilita</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
