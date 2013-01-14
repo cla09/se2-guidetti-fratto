@@ -7,6 +7,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>SWIMv2</title>
+		<link rel="stylesheet" href="CSS/style.css">
 	</head>
 	<body>
 		<div id="pagina">
@@ -17,36 +18,39 @@
 				//eventualmente il messaggio
 			%>
 			<div id="body">
-				<div id="boxCenter">
-					<div id="titoloBox">
-						<center>Completa la registrazione</center>
-					</div>
-					<form action="" method="post">
-						<div id="informazioniBox">
-							<p>
-								<label for="rAvatar">Avatar:</label>
-								<input id="rAvatar" name="rAvatar" type="file" accept="image/*">
-							</p>
-							<p>
-								<label>Abilit&agrave;:</label>
-								<%
-									List<Abilita> abilitaDisponibili = (List<Abilita>) request.getAttribute("abilitaDisponibili");
-									for(Abilita abilita: abilitaDisponibili) {
-								%>
-										<img src="<%= abilita.getIcona() %>">
-										<input name="abilitaScelte" type="checkbox" value="<%= abilita.getCodice() %>">
-										<%= abilita.getNome() %>
-										<br>
-								<%
-									}
-								%>
-							</p>
+				<center>
+					<div id="boxCenter">
+						<div id="titoloBox">
+							<center>Completa la registrazione</center>
 						</div>
-						<center>
-							<input id="pulsante" type="submit" value="Cocludi">
-						</center>
-					</form>
-				</div>
+						<form action="" method="post">
+							<div id="informazioniBox">
+								<p>
+									<label for="rAvatar">Avatar:</label>
+									<input id="rAvatar" name="rAvatar" type="file" accept="image/*">
+								</p>
+								<p>
+									<label>Abilit&agrave;:</label>
+									<%	int i = 0;
+										while(request.getAttribute("abilita" + i) != null) {
+											Abilita abilita = (Abilita) request.getAttribute("abilita" + i);
+									%>
+											<img src="<%= abilita.getIcona() %>">
+											<input name="abilitaScelte" type="checkbox" value="<%= abilita.getCodice() %>">
+											<%= abilita.getNome() %>
+											<br>
+									<%
+											i++;
+										}
+									%>
+								</p>
+							</div>
+							<center>
+								<input id="pulsante" type="submit" value="Concludi">
+							</center>
+						</form>
+					</div>
+				</center>
 			</div>
 		</div>
 	

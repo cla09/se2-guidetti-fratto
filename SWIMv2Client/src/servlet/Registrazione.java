@@ -18,6 +18,7 @@ import session.GestoreUserRemote;
 import utility.Comunicazione;
 import utility.Messaggio;
 import utility.TipoMessaggio;
+import utility.Utilita;
 
 public class Registrazione extends HttpServlet {
 	
@@ -45,9 +46,9 @@ public class Registrazione extends HttpServlet {
 			String nickname = (String) request.getParameter("rNickname");
 			String password = (String) request.getParameter("rPassword");
 			String email = (String) request.getParameter("rEmail");
-			String avatar = "";
+			String avatar = Utilita.USER_DEFAULT_AVATAR;
 			
-			Pattern pattern = Pattern.compile(Comunicazione.EMAIL_PATTERN);
+			Pattern pattern = Pattern.compile(Utilita.EMAIL_PATTERN);
 			Matcher matcher = pattern.matcher(email);
 			if(!matcher.find()) {
 				Messaggio messaggio = new Messaggio(TipoMessaggio.ERRORE, Comunicazione.EMAIL_NON_VALIDA);
@@ -63,7 +64,9 @@ public class Registrazione extends HttpServlet {
 				gestoreUser.registra(nickname, password, email, nome, cognome, avatar, citta, sesso, annoNascita);
 				request.setAttribute("nickname", nickname);
 				List<Abilita> abilitaDisponibili = gestoreAbilita.recuperaAbilitaSistema();
-				request.setAttribute("abilitaDisponibili", abilitaDisponibili);
+				for(int i = 0; i < abilitaDisponibili.size(); i++) {
+					request.setAttribute("abilita" + i, abilitaDisponibili.get(i));
+				}
 				dispatcher = request.getRequestDispatcher("registrazione.jsp");
 				dispatcher.forward(request, response);
 			}
