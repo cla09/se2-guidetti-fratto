@@ -29,22 +29,25 @@ public class GestoreDichiarazione implements GestoreDichiarazioneRemote {
     }
 
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean setAbilitaDichiarate(String nickname, List<Integer> idAbilita) {
 		List<Dichiarazione>	dichiarazioniDaSettare = new ArrayList<Dichiarazione>();
-		User userDaSettare = gestoreDB.find(User.class, nickname);
+		List<Dichiarazione>	dichiarazioniDaRimuovere = new ArrayList<Dichiarazione>();
+		User user = gestoreDB.find(User.class, nickname);
+		Query query;
 		
 		//recupero le abilità associate agli id passati come parametro e creo gli oggetti Dichiarazione corrispondenti 
 		
 		for (Integer id: idAbilita) {
-			Abilita abilitaDaRecuperare = gestoreDB.find(Abilita.class, id);
-			Query query = gestoreDB.createQuery(
+			Abilita abilitaDaSettare = gestoreDB.find(Abilita.class, id);
+			query = gestoreDB.createQuery(
 					"SELECT d " +
 					"FROM Dichiarazione d " +
 					"WHERE d.userDichiarante = :user " +
 					"AND d.abilitaDichiarata = :abilita");
-			query.setParameter("user", userDaSettare);
-			query.setParameter("abilita", abilitaDaRecuperare);
+			query.setParameter("user", user);
+			query.setParameter("abilita", abilitaDaSettare);
 			Dichiarazione dichiarazione;
 			try {
 				//dichiarazione esistente -> dichiarazione non mutata
@@ -52,18 +55,37 @@ public class GestoreDichiarazione implements GestoreDichiarazioneRemote {
 			} catch (NoResultException noResultE) {
 				//dichiarazione non esistente -> dichiarazione nuova o reinserita
 				dichiarazione = new Dichiarazione();
-				dichiarazione.setAbilitaDichiarata(abilitaDaRecuperare);
-				dichiarazione.setUserDichiarante(userDaSettare);
+				dichiarazione.setAbilitaDichiarata(abilitaDaSettare);
+				dichiarazione.setUserDichiarante(user);
 				initDichiarazione(dichiarazione);
 			}
 			dichiarazioniDaSettare.add(dichiarazione);
 		}
-		userDaSettare.setDichiarazioni(dichiarazioniDaSettare);
-		try {
-			gestoreDB.merge(userDaSettare);
-		} catch (Exception e) {
-			System.out.println("errore nell'aggiornamento nel DB");
-			return false;
+		query = gestoreDB.createQuery(
+				"SELECT d " +
+				"FROM Dichiarazioni d " +
+				"WHERE d.userDichiarante = :user");
+		query.setParameter("user", user);
+		dichiarazioniDaRimuovere = (List<Dichiarazione>) query.getResultList();
+		for(Dichiarazione dichiarazione: dichiarazioniDaRimuovere) {
+			if(dichiarazioniDaSettare.contains(dichiarazione)) {
+				dichiarazioniDaSettare.remove(dichiarazione);
+			} else {
+				try {
+					gestoreDB.remove(dichiarazione);
+				} catch (Exception e) {
+					System.out.println("Errore nella rimozione di una dichiarazione");
+					return false;
+				}
+			}
+		}
+		for(Dichiarazione dichiarazione: dichiarazioniDaSettare) {
+			try {
+				gestoreDB.persist(dichiarazione);				
+			} catch(Exception e) {
+				System.out.println("Errore nell'inserimento di una dichiarazione");
+				return false;				
+			}
 		}
 		return true;
 	}
@@ -106,13 +128,18 @@ public class GestoreDichiarazione implements GestoreDichiarazioneRemote {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Abilita> recuperaAbilitaDichiarate(String nickname) {
 		User user = gestoreDB.find(User.class, nickname);
 		List<Abilita> abilitaDichiarate = new ArrayList<Abilita>();
 		List<Dichiarazione> dichiarazioni;
-		dichiarazioni = user.getDichiarazioni();
-		
+		Query query = gestoreDB.createQuery(
+				"SELECT d " +
+				"FROM Dichiarazione d " +
+				"WHERE d.userDichiarante = :user");
+		query.setParameter("user", user);
+		dichiarazioni = (List<Dichiarazione>) query.getResultList();
 		for(Dichiarazione dichiarazione: dichiarazioni) {
 			Abilita abilita;
 			abilita = dichiarazione.getAbilitaDichiarata();
