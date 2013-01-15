@@ -3,18 +3,17 @@ package servlet;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import session.GestoreDichiarazione;
+//import entity.User;
 import session.GestoreDichiarazioneRemote;
-import session.GestoreUserRemote;
+//import session.GestoreUserRemote;
 
 public class CompletamentoRegistrazione extends HttpServlet {
 	
@@ -30,9 +29,10 @@ public class CompletamentoRegistrazione extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
+			RequestDispatcher dispatcher;
 			Context context = new InitialContext();
-			GestoreUserRemote gestoreUser = (GestoreUserRemote) context.lookup("GestoreUserJNDI");
-			GestoreDichiarazioneRemote gestoreDichiarazione = (GestoreDichiarazioneRemote) context.lookupLink("GestoreDichiarazioneJNDI");
+			//GestoreUserRemote gestoreUser = (GestoreUserRemote) context.lookup("GestoreUserJNDI");
+			GestoreDichiarazioneRemote gestoreDichiarazione = (GestoreDichiarazioneRemote) context.lookup("GestoreDichiarazioneJNDI");
 			String nickname = (String) request.getAttribute("nickname");
 			int numeroAbilità = (Integer) request.getAttribute("numeroAbilita");
 			List<Integer> idAbilita = new ArrayList<Integer>();
@@ -46,7 +46,9 @@ public class CompletamentoRegistrazione extends HttpServlet {
 					}
 				}
 			}
-			
+			gestoreDichiarazione.setAbilitaDichiarate(nickname, idAbilita);
+			dispatcher = request.getRequestDispatcher("index.jsp");
+			dispatcher.forward(request, response);
 		} catch (NamingException namingE) {
 			namingE.printStackTrace();
 		}
