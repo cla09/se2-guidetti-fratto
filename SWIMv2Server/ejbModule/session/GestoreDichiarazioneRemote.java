@@ -1,13 +1,11 @@
 package session;
 
 import java.util.List;
-
-import javax.ejb.Local;
-
+import javax.ejb.Remote;
 import entity.Abilita;
 
-@Local
-public interface GestoreDichiarazioneLocal {
+@Remote
+public interface GestoreDichiarazioneRemote {
 	
 	/**
 	 * Il metodo si occupa di settare (modificare) l'insieme delle abilità dichiarate di uno user
@@ -27,5 +25,5 @@ public interface GestoreDichiarazioneLocal {
 	 * @return	Lista delle abilita dichiarate dallo user
 	 */
 	List<Abilita> recuperaAbilitaDichiarate(String nickname);
-	
+
 }

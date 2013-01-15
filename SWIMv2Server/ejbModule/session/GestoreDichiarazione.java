@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import org.jboss.ejb3.annotation.RemoteBinding;
 import entity.Abilita;
 import entity.Aiuto;
 import entity.Dichiarazione;
@@ -17,17 +18,16 @@ import entity.User;
  * Session Bean implementation class GestoreDichiarazione
  */
 @Stateless
-public class GestoreDichiarazione implements GestoreDichiarazioneLocal {
+@RemoteBinding(jndiBinding = "GestoreDichiarazioneJNDI")
+public class GestoreDichiarazione implements GestoreDichiarazioneRemote {
 
 	@PersistenceContext(unitName = "swimv2_unit")
 	private EntityManager gestoreDB;
-	
-    /**
-     * Default constructor. 
-     */
+
     public GestoreDichiarazione() {
     	super();
     }
+
 
 	@Override
 	public boolean setAbilitaDichiarate(String nickname, List<Integer> idAbilita) {
@@ -86,7 +86,10 @@ public class GestoreDichiarazione implements GestoreDichiarazioneLocal {
 			//dichiarazione vergine
 			int numeroFeedback = 0;
 			int sommaValutazioni = 0;
-			query = gestoreDB.createQuery("SELECT f FROM Feedback f WHERE f.aiuto = :aiuto");
+			query = gestoreDB.createQuery(
+					"SELECT f " +
+					"FROM Feedback f " +
+					"WHERE f.aiuto = :aiuto");
 			for(Aiuto aiuto: aiutiAbilita) {
 				Feedback feedback;
 				query.setParameter("aiuto", aiuto);

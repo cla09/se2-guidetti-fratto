@@ -109,4 +109,14 @@
     <servlet-name>TestSingoliMetodiGestoreDichiarazione</servlet-name>
     <url-pattern>/TestSingoliMetodiGestoreDichiarazione</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CompletamentoRegistrazione</display-name>
+    <servlet-name>CompletamentoRegistrazione</servlet-name>
+    <servlet-class>servlet.CompletamentoRegistrazione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CompletamentoRegistrazione</servlet-name>
+    <url-pattern>/CompletamentoRegistrazione</url-pattern>
+  </servlet-mapping>
 </web-app>
