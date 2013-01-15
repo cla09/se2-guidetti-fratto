@@ -2,14 +2,9 @@ package session;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-
 import org.jboss.ejb3.annotation.RemoteBinding;
-
 import entity.Admin;
-import entity.User;
 
 /**
  * Session Bean implementation class GestoreAdmin
@@ -25,40 +20,23 @@ public class GestoreAdmin implements GestoreAdminRemote {
      * Default constructor. 
      */
     public GestoreAdmin() {
-        // TODO Auto-generated constructor stub
+    	super();
     }
 
 	@Override
 	public Admin getAdmin() {
-		
-		System.out.println("sono nel server");
-		Admin adminDaRecuperare;
-
-		Query q = gestoreDB.createQuery("SELECT a FROM Admin a WHERE a.nickname = :nickname");
-		q.setParameter("nickname", "admin");
-
-		try{
-			adminDaRecuperare = (Admin) q.getSingleResult();
-			return adminDaRecuperare;
-		}
-		catch (NoResultException e) {
-			System.out.println("errore nel recupero");
-			return null;
-		}
+		Admin adminDaRecuperare = gestoreDB.find(Admin.class, "admin");
+		return adminDaRecuperare;
 	}
 
 	@Override
 	public boolean modificaInformazioniAdmin(Admin adminModificato) {
-		Admin adminDaAggiornare;
-		
-		adminDaAggiornare = getAdmin();
-		
+		Admin adminDaAggiornare = getAdmin();
 		adminDaAggiornare.setPassword(adminModificato.getPassword());
 		adminDaAggiornare.setEmail(adminModificato.getEmail());
 		adminDaAggiornare.setNome(adminModificato.getNome());
 		adminDaAggiornare.setCognome(adminModificato.getCognome());
 		adminDaAggiornare.setAvatar(adminModificato.getAvatar());
-		
 		try{
 			gestoreDB.merge(adminDaAggiornare);
 			return true;

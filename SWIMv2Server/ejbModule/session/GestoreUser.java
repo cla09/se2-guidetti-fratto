@@ -2,12 +2,8 @@ package session;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-
 import org.jboss.ejb3.annotation.RemoteBinding;
-
 import entity.User;
 
 /**
@@ -24,31 +20,26 @@ public class GestoreUser implements GestoreUserRemote {
      * Default constructor. 
      */
     public GestoreUser() {
-        // TODO Auto-generated constructor stub
+    	super();
     }
 
     @Override
 	public boolean controllaDisponibilitaNickname(String nickname) {
-				
 		if(getUser(nickname) != null){
 			//nickname non disponibile
 			System.out.println("nickname non disponibile");
 			return false;
 		}
-		else{
-			//nickname disponibile
-			System.out.println("nickname disponibile");
-			return true;
-		}
+		//nickname disponibile
+		System.out.println("nickname disponibile");
+		return true;
 	}
     
     
 	@Override
 	public boolean registra(String nickname, String password, String email, String nome, String cognome, 
 									String percorsoAvatar, String citta, String sesso, int annoNascita) {
-		
 		User nuovoUser = new User();
-
 		nuovoUser.setNickname(nickname);
 		nuovoUser.setPassword(password);
 		nuovoUser.setEmail(email);
@@ -58,7 +49,6 @@ public class GestoreUser implements GestoreUserRemote {
 		nuovoUser.setCitta(citta);
 		nuovoUser.setSesso(sesso);
 		nuovoUser.setAnnoNascita(annoNascita);
-
 		try{
 			System.out.println("utente inserito correttamente");
 			gestoreDB.persist(nuovoUser);
@@ -73,26 +63,13 @@ public class GestoreUser implements GestoreUserRemote {
 
 	@Override
 	public User getUser(String nickname) {
-		User userDaRecuperare;
-
-		Query q = gestoreDB.createQuery("SELECT u FROM User u WHERE u.nickname = :nickname");
-		q.setParameter("nickname", nickname);
-
-		try{
-			userDaRecuperare = (User) q.getSingleResult();
-			return userDaRecuperare;
-		}
-		catch (NoResultException e) {
-			return null;
-		}
+		User userDaRecuperare = gestoreDB.find(User.class, nickname);
+		return userDaRecuperare;
 	}
 
 	@Override
 	public boolean modificaInformazioniUser(User userModificato) {
-		User userDaAggiornare;
-		
-		userDaAggiornare = getUser(userModificato.getNickname());
-		
+		User userDaAggiornare = getUser(userModificato.getNickname());
 		userDaAggiornare.setPassword(userModificato.getPassword());
 		userDaAggiornare.setEmail(userModificato.getEmail());
 		userDaAggiornare.setNome(userModificato.getNome());
@@ -101,8 +78,6 @@ public class GestoreUser implements GestoreUserRemote {
 		userDaAggiornare.setCitta(userModificato.getCitta());
 		userDaAggiornare.setSesso(userModificato.getSesso());
 		userDaAggiornare.setAnnoNascita(userModificato.getAnnoNascita());
-	
-		
 		try{
 			gestoreDB.merge(userDaAggiornare);
 			return true;
@@ -116,11 +91,7 @@ public class GestoreUser implements GestoreUserRemote {
 	@Override
 	//DA TESTARE
 	public boolean confermaCancellazioneUser(String nickname) {
-		
-		User userDaCancellare;
-		
-		userDaCancellare = getUser(nickname);
-		
+		User userDaCancellare = getUser(nickname);
 		try{
 			gestoreDB.remove(userDaCancellare);
 			System.out.println("user rimosso correttamente");

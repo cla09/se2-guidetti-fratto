@@ -16,12 +16,12 @@ public class GestoreAmicizia implements GestoreAmiciziaRemote {
 	@PersistenceContext(unitName = "swimv2_unit")
 	private EntityManager gestoreDB;
 	
-	private GestoreData gestoreData;
+	private GestoreDataLocal gestoreData;
     /**
      * Default constructor. 
      */
     public GestoreAmicizia() {
-        // TODO Auto-generated constructor stub
+    	super();
     }
 
 	@Override

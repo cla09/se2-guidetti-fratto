@@ -88,7 +88,7 @@ public class TestSingoliMetodiGestoreAbilita extends HttpServlet {
 			 * 
 			 * test1: recupera tutte le abilità dichiarate da cla09 (ha dichiarato qualche abilità)
 			 * test2: recupera abilita utente che non ha dichiarata nulla
-			 */
+			 
 			
 			List<Abilita> abilitaDichiarate;
 			String nickname;
@@ -121,7 +121,7 @@ public class TestSingoliMetodiGestoreAbilita extends HttpServlet {
 				System.out.println("lo user non ha dichiarato alcuna abilita");
 			}
 			
-			
+			*/
 		}
 		catch (Exception e) {
 			// TODO Auto-generated catch block
