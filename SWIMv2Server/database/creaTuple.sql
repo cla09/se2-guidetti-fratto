@@ -1,9 +1,9 @@
 #Inserimento tuple tabella profilo
-insert into profilo values (default, 'cla09', 'claudiofratto', 'cla09.com', 'claudio', 'fratto', null, 'sorbo', 'M', 1990, 'user');
-insert into profilo values (default, 'euge', 'eugeguid', 'euge.com', 'eugenio', 'guidetti', null, 'ferrara', 'M', '1990', 'user');
-insert into profilo values (default, 'kikka', 'kik90', 'kik.com', 'federica', 'garibaldi', null, 'pisa', 'F', 1990, 'user');
-insert into profilo values (default, 'franco', 'ciccio2', 'franco.com', 'francesco', 'rizzo', null, 'palermo', 'M', 1990, 'user');
-insert into profilo values (default, 'jojo', 'giova', 'gio.com', 'giovanni', 'mio', null, 'cs', 'M', 1980, 'user');
+insert into profilo values ('cla09', 'claudiofratto', 'cla09.com', 'claudio', 'fratto', null, 'sorbo', 'M', 1990, 'user');
+insert into profilo values ('euge', 'eugeguid', 'euge.com', 'eugenio', 'guidetti', null, 'ferrara', 'M', '1990', 'user');
+insert into profilo values ('kikka', 'kik90', 'kik.com', 'federica', 'garibaldi', null, 'pisa', 'F', 1990, 'user');
+insert into profilo values ('franco', 'ciccio2', 'franco.com', 'francesco', 'rizzo', null, 'palermo', 'M', 1990, 'user');
+insert into profilo values ('jojo', 'giova', 'gio.com', 'giovanni', 'mio', null, 'cs', 'M', 1980, 'user');
 
 #select * from profilo;
 
@@ -15,9 +15,9 @@ insert into abilita values(default, 'meccanico', null, 'pulizia carburatore auto
 #select * from abilita;
 
 #Inserimento tuple tabella data_completa
-insert into data_completa values(default, 1358093818355, 2013, 01, 13, 17, 16, 58);
-insert into data_completa values(default, 1358094095242, 2013, 01, 13, 17, 21, 35);
-insert into data_completa values(default, 1358094150373, 2013, 01, 13, 17, 22, 30);
+insert into data_completa values(1358093818355, 2013, 01, 13, 17, 16, 58);
+insert into data_completa values(1358094095242, 2013, 01, 13, 17, 21, 35);
+insert into data_completa values(1358094150373, 2013, 01, 13, 17, 22, 30);
 
 
 #Inserimento tuple tabella proposta abilita
