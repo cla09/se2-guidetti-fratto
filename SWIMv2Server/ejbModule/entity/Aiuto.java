@@ -11,30 +11,30 @@ public class Aiuto implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "codice")
-	private int codiceAiuto;
+	@Column(name = "id")
+	private int idAiuto;
 	
 	@Column(name = "descrizione", nullable = false)
 	private String descrizioneAiuto;	
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)	//se elimino un aiuto lo user richiedente deve continuare ad esistere
-	@JoinColumn(name = "user_richiedente", nullable = false)
+	@JoinColumn(name = "user_richiedente", referencedColumnName = "nickname", nullable = false)
 	private User userRichiedenteAiuto;
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)	//se elimino un aiuto lo user destinatario deve continuare ad esistere
-	@JoinColumn(name = "user_destinatario", nullable = false)
+	@JoinColumn(name = "user_destinatario", referencedColumnName = "nickname", nullable = false)
 	private User userDestinatarioAiuto;
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)	//se elimino un aiuto l'abilità associata deve continuare ad esistere
-	@JoinColumn(name = "codice_abilita", nullable = false)
+	@JoinColumn(name = "id_abilita", referencedColumnName = "id", nullable = false)
 	private Abilita abilitaAiuto;
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)	//se elimino un aiuto la data associata al momento di richiesta deve continuare ad esistere (ci potrebbe essere qualche altro evento con quella data)
-	@JoinColumn(name = "momento_richiesta", nullable = false)
+	@JoinColumn(name = "momento_richiesta", referencedColumnName = "timestamp", nullable = false)
 	private Data momentoRichiestaAiuto;
 
 	@ManyToOne(cascade = CascadeType.PERSIST)	//se elimino un aiuto la data associata al momento di accettazione deve continuare ad esistere (ci potrebbe essere qualche altro evento con quella data)
-	@JoinColumn(name = "momento_accettazione")
+	@JoinColumn(name = "momento_accettazione", referencedColumnName = "timestamp")
 	private Data momentoAccettazioneAiuto;
 
 	
@@ -55,11 +55,11 @@ public class Aiuto implements Serializable{
 	 */
 	
 	public int getCodiceAiuto() {
-		return codiceAiuto;
+		return idAiuto;
 	}
 
 	public void setCodiceAiuto(int codiceAiuto) {
-		this.codiceAiuto = codiceAiuto;
+		this.idAiuto = codiceAiuto;
 	}
 
 	public String getDescrizioneAiuto() {

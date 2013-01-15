@@ -3,9 +3,6 @@ package entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
-
-
-
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "ruolo", discriminatorType = DiscriminatorType.STRING)
@@ -13,13 +10,9 @@ import javax.persistence.*;
 public abstract class Profilo implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private long id;
 	
-	@Column(name = "nickname", unique = true, nullable = false)
+	@Id
+	@Column(name = "nickname")
 	private String nickname;
 	
 	@Column(name = "password", nullable = false)
@@ -57,13 +50,6 @@ public abstract class Profilo implements Serializable{
 	 * Inizio metodi setter e getter *
 	 *********************************
 	 */
-	public long getId(){
-		return id;
-	}
-	
-	public void setId(long id){
-		this.id = id;
-	}
 	
 	public String getNickname() {
 		return nickname;

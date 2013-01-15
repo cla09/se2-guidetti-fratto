@@ -1,7 +1,6 @@
 package entity;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
 
 @Entity
@@ -12,23 +11,23 @@ public class Amicizia implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "codice")
-	private int codiceAmicizia;
+	@Column(name = "id")
+	private int idAmicizia;
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)	//se elimino un'amicizia lo user richiedente deve continuare ad esistere
-	@JoinColumn(name = "user_richiedente", nullable = false)
+	@JoinColumn(name = "user_richiedente", referencedColumnName = "nickname", nullable = false)
 	private User userRichiedenteAmicizia;
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)	//se elimino un'amicizia lo user destinatario deve continuare ad esistere
-	@JoinColumn(name = "user_destinatario", nullable = false)
+	@JoinColumn(name = "user_destinatario", referencedColumnName = "nickname", nullable = false)
 	private User userDestinatarioAmicizia;
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)	//se elimino un'amicizia la data associata al momento di richiesta deve continuare ad esistere (ci potrebbe essere qualche altro evento con quella data)
-	@JoinColumn(name = "momento_richiesta", nullable = false)
+	@JoinColumn(name = "momento_richiesta", referencedColumnName = "timestamp", nullable = false)
 	private Data momentoRichiestaAmicizia;
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)	//se elimino un'amicizia la data associata al momento di accettazione deve continuare ad esistere (ci potrebbe essere qualche altro evento con quella data)
-	@JoinColumn(name = "momento_accettazione")
+	@JoinColumn(name = "momento_accettazione", referencedColumnName = "timestamp")
 	private Data momentoAccettazioneAmicizia;
 	
 	
@@ -46,11 +45,11 @@ public class Amicizia implements Serializable{
 	 */
 	
 	public int getCodiceAmicizia() {
-		return codiceAmicizia;
+		return idAmicizia;
 	}
 
 	public void setCodiceAmicizia(int codiceAmicizia) {
-		this.codiceAmicizia = codiceAmicizia;
+		this.idAmicizia = codiceAmicizia;
 	}
 
 	public User getUserRichiedenteAmicizia() {

@@ -1,17 +1,7 @@
 package entity;
 
 import java.io.Serializable;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 @Entity
@@ -22,7 +12,7 @@ public class PropostaAbilita implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "codice")
+	@Column(name = "id")
 	private int id;
 	
 	@Column(name = "nome", nullable = false)
@@ -37,7 +27,7 @@ public class PropostaAbilita implements Serializable {
 
 	//PropostaAbilita è proprietario della relazione con lo User
 	@ManyToOne(cascade = CascadeType.PERSIST)		//se elimino proposta lo user associato non viene cancellato
-	@JoinColumn(name = "user_proponente")
+	@JoinColumn(name = "user_proponente", referencedColumnName  = "nickname", nullable = false)
 	private User userProponente;
 
 	
