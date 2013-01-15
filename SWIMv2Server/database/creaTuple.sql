@@ -1,9 +1,9 @@
 #Inserimento tuple tabella profilo
-insert into profilo values ('cla09', 'claudiofratto', 'cla09.com', 'claudio', 'fratto', null, 'sorbo', 'M', 1990, 'user');
-insert into profilo values ('euge', 'eugeguid', 'euge.com', 'eugenio', 'guidetti', null, 'ferrara', 'M', '1990', 'user');
-insert into profilo values ('kikka', 'kik90', 'kik.com', 'federica', 'garibaldi', null, 'pisa', 'F', 1990, 'user');
-insert into profilo values ('franco', 'ciccio2', 'franco.com', 'francesco', 'rizzo', null, 'palermo', 'M', 1990, 'user');
-insert into profilo values ('jojo', 'giova', 'gio.com', 'giovanni', 'mio', null, 'cs', 'M', 1980, 'user');
+insert into profilo values ('cla09', 'claudiofratto', 'cla09.com', 'claudio', 'fratto', null, 'sorbo', 'Maschio', 1990, 'user');
+insert into profilo values ('euge', 'eugeguid', 'euge.com', 'eugenio', 'guidetti', null, 'ferrara', 'Maschio', '1990', 'user');
+insert into profilo values ('kikka', 'kik90', 'kik.com', 'federica', 'garibaldi', null, 'pisa', 'Femmina', 1990, 'user');
+insert into profilo values ('franco', 'ciccio2', 'franco.com', 'francesco', 'rizzo', null, 'palermo', 'Maschio', 1990, 'user');
+insert into profilo values ('jojo', 'giova', 'gio.com', 'giovanni', 'mio', null, 'cs', 'Maschio', 1980, 'user');
 
 #select * from profilo;
 
