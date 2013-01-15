@@ -167,5 +167,8 @@ insert into profilo values (default, 'admin', 'admin', 'inserisci la tua mail',
 							'inserisci nome', 'inserisci cognome',
 							null, null, null, null, 'admin');
 
+#Creazione dell'abilità di default
+insert into abilita values (default, 'abilità generica', 'icona default', 'inserisci questa in attesa di proporne una');
+
 #Creazione della data utilizzata convenzionalmente per indicare il momentoAccettazione null
 #insert into data_completa values( '9999-12-31 23:59:59',9999, 12, 31, 23, 59, 59);

@@ -58,6 +58,70 @@ public class TestSingoliMetodiGestoreAbilita extends HttpServlet {
 			//metodo funzionante
 			 */
 			
+			/*
+			 * METODO: creaAbilita
+			 * 
+			 * test: inserisci una nuova abilita nel sistema
+			 * 
+			 
+			boolean risultatoAggiugiAbilita;
+			String nome = "portiere";
+			String descrizione = "disponibile notturni";
+			String pathIcona = null;
+			
+			risultatoAggiugiAbilita = gestoreAbilitaRemoto.creaAbilita(nome, descrizione, pathIcona);
+			
+			System.out.println("risultato inserimento: " + risultatoAggiugiAbilita);
+
+			// metodo funzionante
+			
+			*/
+			
+			/*
+			 * METODO setAbilitaDichiarate
+			 * 
+			 * da testare
+			 */
+			
+			/*
+			 * METODO getAbilitaDichiarate
+			 * 
+			 * test1: recupera tutte le abilità dichiarate da cla09 (ha dichiarato qualche abilità)
+			 * test2: recupera abilita utente che non ha dichiarata nulla
+			 */
+			
+			List<Abilita> abilitaDichiarate;
+			String nickname;
+			
+			//test1
+			nickname = "cla09";		
+			abilitaDichiarate = gestoreAbilitaRemoto.recuperaAbilitaDichiarate(nickname);
+			
+			if(abilitaDichiarate != null){
+				System.out.println("lo user " + nickname + "ha dichiarato le seguenti abilità:");
+				for(Abilita a: abilitaDichiarate){
+					System.out.println("abilita: " + a.getNome());
+				}
+			}
+			else{
+				System.out.println("lo user non ha dichiarato alcuna abilita");
+			}
+			
+			//test2
+			nickname = "cla0";		
+			abilitaDichiarate = gestoreAbilitaRemoto.recuperaAbilitaDichiarate(nickname);
+			
+			if(abilitaDichiarate != null){
+				System.out.println("lo user " + nickname + "ha dichiarato le seguenti abilità:");
+				for(Abilita a: abilitaDichiarate){
+					System.out.println("abilita: " + a.getNome());
+				}
+			}
+			else{
+				System.out.println("lo user non ha dichiarato alcuna abilita");
+			}
+			
+			
 		}
 		catch (Exception e) {
 			// TODO Auto-generated catch block

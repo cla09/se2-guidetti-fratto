@@ -3,6 +3,7 @@ insert into profilo values (default, 'cla09', 'claudiofratto', 'cla09.com', 'cla
 insert into profilo values (default, 'euge', 'eugeguid', 'euge.com', 'eugenio', 'guidetti', null, 'ferrara', 'M', '1990', 'user');
 insert into profilo values (default, 'kikka', 'kik90', 'kik.com', 'federica', 'garibaldi', null, 'pisa', 'F', 1990, 'user');
 insert into profilo values (default, 'franco', 'ciccio2', 'franco.com', 'francesco', 'rizzo', null, 'palermo', 'M', 1990, 'user');
+insert into profilo values (default, 'jojo', 'giova', 'gio.com', 'giovanni', 'mio', null, 'cs', 'M', 1980, 'user');
 
 #select * from profilo;
 
