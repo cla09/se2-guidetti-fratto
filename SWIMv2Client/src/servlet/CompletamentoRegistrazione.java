@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 //import entity.User;
 import session.GestoreDichiarazioneRemote;
 //import session.GestoreUserRemote;
+import utility.Comunicazione;
+import utility.Messaggio;
+import utility.TipoMessaggio;
 
 public class CompletamentoRegistrazione extends HttpServlet {
 	
@@ -34,19 +37,23 @@ public class CompletamentoRegistrazione extends HttpServlet {
 			//GestoreUserRemote gestoreUser = (GestoreUserRemote) context.lookup("GestoreUserJNDI");
 			GestoreDichiarazioneRemote gestoreDichiarazione = (GestoreDichiarazioneRemote) context.lookup("GestoreDichiarazioneJNDI");
 			String nickname = (String) request.getAttribute("nickname");
-			int numeroAbilità = (Integer) request.getAttribute("numeroAbilita");
+			String[] abilitaScelte = request.getParameterValues("abilitaScelte");
 			List<Integer> idAbilita = new ArrayList<Integer>();
-			for(int i = 0; i < numeroAbilità; i++) {
-				if(request.getParameter("abilitaScelta" + i) != null) {
+			Messaggio messaggio = new Messaggio(TipoMessaggio.CONFERMA, Comunicazione.REGISTRAZIONE_COMPLETATA);
+			request.setAttribute("messaggio", messaggio);
+			if(abilitaScelte != null) {
+				//l'utente ha scelta almeno un'abilita
+				for(int i = 0; i < abilitaScelte.length; i++) {
 					try {
-						Integer id = Integer.parseInt(request.getParameter("abilitaScelta" + i));
+						System.out.println(abilitaScelte[i]);
+						int id = Integer.parseInt(abilitaScelte[i]);
 						idAbilita.add(id);
 					} catch (NumberFormatException numberFormatE) {
 						numberFormatE.printStackTrace();
 					}
 				}
+				gestoreDichiarazione.setAbilitaDichiarate(nickname, idAbilita);
 			}
-			gestoreDichiarazione.setAbilitaDichiarate(nickname, idAbilita);
 			dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
 		} catch (NamingException namingE) {

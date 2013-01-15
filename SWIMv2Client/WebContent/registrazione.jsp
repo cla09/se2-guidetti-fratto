@@ -23,7 +23,7 @@
 						<div id="titoloBox">
 							<center>Completa la registrazione</center>
 						</div>
-						<form action="" method="post" enctype="multipart/form-data">
+						<form action="CompletamentoRegistrazione" method="post" enctype="multipart/form-data">
 							<div id="informazioniBox">
 								<%
 									String nickname = (String) request.getAttribute("nickname");
@@ -41,13 +41,12 @@
 											Abilita abilita = (Abilita) request.getAttribute("abilita" + i);
 									%>
 											<img src="<%= abilita.getIcona() %>">
-											<input name="abilitaScelta<%= i %>" type="checkbox" value="<%= abilita.getCodice() %>">
+											<input name="abilitaScelte" type="checkbox" value="<%= abilita.getCodice() %>">
 											<%= abilita.getNome() %>
 											<br>
 									<%
 											i++;
 										}
-										request.setAttribute("numeroAbilita", i);
 									%>
 								</p>
 							</div>
