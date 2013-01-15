@@ -63,7 +63,7 @@ public class GestoreDichiarazione implements GestoreDichiarazioneRemote {
 		}
 		query = gestoreDB.createQuery(
 				"SELECT d " +
-				"FROM Dichiarazioni d " +
+				"FROM Dichiarazione d " +
 				"WHERE d.userDichiarante = :user");
 		query.setParameter("user", user);
 		dichiarazioniDaRimuovere = (List<Dichiarazione>) query.getResultList();
