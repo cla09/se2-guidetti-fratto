@@ -26,5 +26,5 @@ public interface GestoreAbilitaRemote {
 	 * @return	true, se l'inserimento va a buon fine; false, altrimenti
 	 */
 	boolean creaAbilita(String nome, String descrizione, String pathIcona);
-	
+		
 }

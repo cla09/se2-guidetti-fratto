@@ -71,10 +71,7 @@ public class TestSingoliMetodiGestoreUser extends HttpServlet {
 			 * METODO registra
 			 * 
 			 * test1: inserimento nuovo utente (con nickname disponibile)
-			 * test2: inserimento non consentito (nickname non disponibile)
-			 * 
-			 * provo ad inserire due volte l'utente pippo
-			 * 
+			 *  
 			 
 			String nickname = "pippo";
 			String password = "pluto";
@@ -83,11 +80,10 @@ public class TestSingoliMetodiGestoreUser extends HttpServlet {
 			String cognome = "rocchi";
 			String percorsoAvatar = "percorsoProva"; 
 			String citta = "cz";
-			String sesso = "M";
+			String sesso = "Maschio";
 			int annoNascita = 1990; 
 						
 			boolean inserimento1;
-			boolean inserimento2;
 			
 			inserimento1 = gestoreUserRemoto.registra(nickname, password, email, nome, cognome, percorsoAvatar, citta, sesso, annoNascita);
 			
@@ -98,18 +94,10 @@ public class TestSingoliMetodiGestoreUser extends HttpServlet {
 				System.out.println("user " + nickname + " non inserito");
 			}
 
-			inserimento2 = gestoreUserRemoto.registra(nickname, password, email, nome, cognome, percorsoAvatar, citta, sesso, annoNascita);
-
-			if(inserimento2){
-				System.out.println("user " + nickname + " inserito correttamente");
-			}
-			else{
-				System.out.println("user " + nickname + " non inserito");
-			}
 			
 			//METODO FUNZIONANATE
-			
 			*/
+			
 			
 			/*
 			 * METODO: getUser
@@ -182,7 +170,7 @@ public class TestSingoliMetodiGestoreUser extends HttpServlet {
 			String cognome = "rizzo";
 			String percorsoAvatar = "percorsoProva"; 
 			String citta = "milano";
-			String sesso = "M";
+			String sesso = "Maschio";
 			int annoNascita = 1990; 
 			
 			userAggiornato.setNickname(nickname);
@@ -219,8 +207,8 @@ public class TestSingoliMetodiGestoreUser extends HttpServlet {
 			
 			// metodo funzionante (al momento)
 			 * 
-			 * 
 			 */
+			
 		}
 		catch (Exception e) {
 			// TODO Auto-generated catch block

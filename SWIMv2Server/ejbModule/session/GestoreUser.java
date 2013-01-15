@@ -50,11 +50,11 @@ public class GestoreUser implements GestoreUserRemote {
 		nuovoUser.setSesso(sesso);
 		nuovoUser.setAnnoNascita(annoNascita);
 		try{
-			System.out.println("utente inserito correttamente");
 			gestoreDB.persist(nuovoUser);
+			System.out.println("utente inserito correttamente");
 			return true;
 		}
-		catch(Exception e){
+		catch(IllegalArgumentException e){
 			System.out.println("errore nell'inserimento nel DB");
 			return false;
 		}

@@ -108,6 +108,7 @@ public class GestoreDichiarazione implements GestoreDichiarazioneLocal {
 		List<Abilita> abilitaDichiarate = new ArrayList<Abilita>();
 		List<Dichiarazione> dichiarazioni;
 		dichiarazioni = user.getDichiarazioni();
+		
 		for(Dichiarazione dichiarazione: dichiarazioni) {
 			Abilita abilita;
 			abilita = dichiarazione.getAbilitaDichiarata();

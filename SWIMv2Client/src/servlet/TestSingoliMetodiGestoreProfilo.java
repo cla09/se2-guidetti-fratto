@@ -50,13 +50,12 @@ public class TestSingoliMetodiGestoreProfilo extends HttpServlet {
 			 * 
 			 * test1: ruolo user
 			 * test2: ruolo admin
-			 * test3: utente non esistente
 			 * 
 			 
 			String ruoloDaRecuperare;
 			String nickname1 = "cla09";
 			String nickname2 = "admin";
-			String nickname3 = "cla9";
+			
 			
 			//test1
 			ruoloDaRecuperare = gestoreProfiloRemoto.getRuolo(nickname1);
@@ -65,14 +64,10 @@ public class TestSingoliMetodiGestoreProfilo extends HttpServlet {
 			//test2
 			ruoloDaRecuperare = gestoreProfiloRemoto.getRuolo(nickname2);
 			System.out.println(nickname2 + " è un " + ruoloDaRecuperare);	//admin
-			
-			//test3
-			ruoloDaRecuperare = gestoreProfiloRemoto.getRuolo(nickname3);
-			System.out.println(nickname3 + " è un " + ruoloDaRecuperare);	//non esiste
-			
+						
 			//metodo funzionante
-			
 			*/
+			
 			
 			
 			
@@ -93,10 +88,10 @@ public class TestSingoliMetodiGestoreProfilo extends HttpServlet {
 			//test1
 			risultato = gestoreProfiloRemoto.controllaCredenziali(nicknameOK, passwordOK);
 			if(risultato){
-				System.out.println("nickname: " + nicknameOK + "  password: " + passwordOK + "sono credenziali valide");
+				System.out.println("nickname: " + nicknameOK + "  password: " + passwordOK + " sono credenziali valide");
 			}
 			else{
-				System.out.println("nickname: " + nicknameOK + "  password: " + passwordOK + "sono non credenziali valide");
+				System.out.println("nickname: " + nicknameOK + "  password: " + passwordOK + " sono non credenziali valide");
 			}
 			
 			//test2
@@ -118,7 +113,9 @@ public class TestSingoliMetodiGestoreProfilo extends HttpServlet {
 			}
 			
 			 // METODO TESTATO E FUNZIONANTE
-			*/
+			  * 
+			  */
+			
 		}
 		catch (Exception e) {
 			// TODO Auto-generated catch block
