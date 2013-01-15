@@ -24,7 +24,6 @@ public class Feedback implements Serializable{
 	private int id;
     
     @OneToOne(mappedBy = "feedback")	
-    @JoinColumn(name = "id_aiuto", referencedColumnName = "id", nullable = false)
     private Aiuto aiuto;
             
 	@Column(name = "valutazione_numerica", nullable = false)

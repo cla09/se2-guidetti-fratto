@@ -144,7 +144,7 @@ create table aiuto (
 
 #tabella feedback
 create table feedback (
-	id bigint unsigned auto_increment,
+	id int unsigned auto_increment,
 	id_aiuto int unsigned unique not null,
 	valutazione_numerica int unsigned not null,
 	valutazione_estesa varchar(140) not null,
