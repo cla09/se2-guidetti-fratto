@@ -108,7 +108,7 @@ public class TestSingoliMetodiGestoreAbilita extends HttpServlet {
 			}
 			
 			//test2
-			nickname = "cla0";		
+			nickname = "cla0"; 		
 			abilitaDichiarate = gestoreAbilitaRemoto.recuperaAbilitaDichiarate(nickname);
 			
 			if(abilitaDichiarate != null){
