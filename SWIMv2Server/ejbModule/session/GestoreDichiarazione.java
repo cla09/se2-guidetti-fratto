@@ -60,9 +60,19 @@ public class GestoreDichiarazione implements GestoreDichiarazioneRemote {
 		}
 		userDaSettare.setDichiarazioni(dichiarazioniDaSettare);
 		try {
+			//stampo le dichiarazioni dello user
+			List<Dichiarazione> dichia = userDaSettare.getDichiarazioni();
+			
+			for(Dichiarazione d: dichia){
+				System.out.println("dichiarazione: " + d.getAbilitaDichiarata().getNome());
+			}
+			
+			List<Dichiarazione> dichiarazioneUserOld = userDaSettare.getDichiarazioni();
+						
 			gestoreDB.merge(userDaSettare);
 		} catch (Exception e) {
 			System.out.println("errore nell'aggiornamento nel DB");
+			return false;
 		}
 		return true;
 	}
@@ -86,22 +96,22 @@ public class GestoreDichiarazione implements GestoreDichiarazioneRemote {
 			//dichiarazione vergine
 			int numeroFeedback = 0;
 			int sommaValutazioni = 0;
-			query = gestoreDB.createQuery(
-					"SELECT f " +
-					"FROM Feedback f " +
-					"WHERE f.aiuto = :aiuto");
 			for(Aiuto aiuto: aiutiAbilita) {
 				Feedback feedback;
-				query.setParameter("aiuto", aiuto);
-				try {
-					feedback = (Feedback) query.getSingleResult();
+				feedback = gestoreDB.find(Feedback.class, aiuto.getCodiceAiuto());
+				if( feedback != null){
 					numeroFeedback ++;
 					sommaValutazioni = sommaValutazioni + feedback.getValutazioneNumericaFeedback();
-				} catch (NoResultException e) {
-				}
+				}	
 			}
 			dichiarazione.setNumeroFeedback(numeroFeedback);
-			dichiarazione.setMediaValutazioni(sommaValutazioni / numeroFeedback);
+			
+			if(numeroFeedback !=0){
+				dichiarazione.setMediaValutazioni(sommaValutazioni / numeroFeedback);
+			}
+			else{
+				dichiarazione.setMediaValutazioni(0);
+			}
 		}
 	}
 

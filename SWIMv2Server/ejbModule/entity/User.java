@@ -32,7 +32,7 @@ public class User extends Profilo implements Serializable{
 	@Column(name = "anno_nascita")
 	private int annoNascita;
 	
-	@OneToMany(mappedBy = "userDichiarante", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "userDichiarante", cascade = CascadeType.ALL)
 	private List<Dichiarazione> dichiarazioni;
 
 	/*

@@ -49,6 +49,6 @@ insert into aiuto values(default, 'mi aiuti?', 'euge', 'franco', 2, 135809381835
 #select * from aiuto;
 
 #Inserimento tabella feedback
-insert into feedback values(default, 1, 4, 'ottimo lavoro', 1358094150373);
+insert into feedback values(1, 4, 'ottimo lavoro', 1358094150373);
 
 #select * from feedback;

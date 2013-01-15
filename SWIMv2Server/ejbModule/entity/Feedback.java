@@ -19,13 +19,9 @@ public class Feedback implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "id_aiuto")
 	private int id;
-    
-    @OneToOne
-    private Aiuto aiuto;
-            
+                
 	@Column(name = "valutazione_numerica", nullable = false)
 	private int valutazioneNumericaFeedback;
 	
@@ -51,15 +47,6 @@ public class Feedback implements Serializable{
 	 * Inizio metodi setter e getter *
 	 *********************************
 	 */
-	
-	public Aiuto getAiutoAssociato() {
-		return aiuto;
-	}
-
-	public void setAiutoAssociato(Aiuto aiuto) {
-		this.aiuto = aiuto;
-	}
-
 	
 	public int getValutazioneNumericaFeedback() {
 		return valutazioneNumericaFeedback;
