@@ -75,6 +75,33 @@ body {
 	width: 220px;
 }
 
+#checkAbilita input{
+	width: auto;
+}
+
+#checkAbilita {
+	text-align: left;
+	overflow: auto;
+}
+
+#iconaAbilita, #corpoAbilita {
+	border: 1px solid grey;
+	border-radius: 5px;
+	padding: 5px;
+	float: right;
+}
+
+#iconaAbilita {
+	height: 50px;
+	width: 50px;
+	margin-right: 5px;
+}
+
+#corpoAbilita {
+	width: 220px;
+	margin-left: 5px;
+}
+
 #pulsante {
 	width: 150px;
 	height: 30px;
