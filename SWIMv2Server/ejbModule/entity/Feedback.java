@@ -1,20 +1,7 @@
 package entity;
 
 import java.io.Serializable;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
-
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Parameter;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "feedback")
@@ -32,28 +19,22 @@ public class Feedback implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private long id;
-	
-	/*
-	@Id
-	@GeneratedValue(generator = "aiutoPrimaryKey")
-	*/
-	@Column(name = "codice_aiuto", unique = true)
-    private int codiceAiuto;
+	private int id;
     
     @OneToOne(mappedBy = "feedback")	
-    @PrimaryKeyJoinColumn(name = "codice_aiuto")
+    @JoinColumn(name = "id_aiuto", referencedColumnName = "id", nullable = false)
     private Aiuto aiuto;
             
 	@Column(name = "valutazione_numerica", nullable = false)
-	private short valutazioneNumericaFeedback;
+	private int valutazioneNumericaFeedback;
 	
 	@Column(name = "valutazione_estesa", nullable = false)
 	private String valutazioneEstesaFeedback;
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)	//se elimino un feedback la data associata al momento di rilascio deve continuare ad esistere (ci potrebbe essere qualche altro evento con quella data)
-	@JoinColumn(name = "momento_rilascio")
+	@JoinColumn(name = "momento_rilascio", referencedColumnName = "timestamp", nullable = false)
 	private Data momentoRilascioFeedback;
 	
 
@@ -72,14 +53,6 @@ public class Feedback implements Serializable{
 	 *********************************
 	 */
 	
-	public int getCodiceFeedback() {
-		return codiceAiuto;
-	}
-
-	public void setCodiceFeedback(int codiceFeedback) {
-		this.codiceAiuto = codiceFeedback;
-	}
-
 	public Aiuto getAiutoAssociato() {
 		return aiuto;
 	}
@@ -89,7 +62,7 @@ public class Feedback implements Serializable{
 	}
 
 	
-	public short getValutazioneNumericaFeedback() {
+	public int getValutazioneNumericaFeedback() {
 		return valutazioneNumericaFeedback;
 	}
 
@@ -114,12 +87,12 @@ public class Feedback implements Serializable{
 	}
 
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	

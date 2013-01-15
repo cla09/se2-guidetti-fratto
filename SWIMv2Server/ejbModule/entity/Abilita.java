@@ -1,8 +1,6 @@
 package entity;
 
 import java.io.Serializable;
-import java.util.List;
-
 import javax.persistence.*;
 
 @Entity
@@ -13,8 +11,8 @@ public class Abilita implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "codice")
-	private int codiceAbilita;
+	@Column(name = "id")
+	private int idAbilita;
 	
 	@Column(name = "nome", nullable = false)
 	private String nomeAbilita;
@@ -47,11 +45,11 @@ public class Abilita implements Serializable{
 	 */
 	
 	public int getCodice() {
-		return codiceAbilita;
+		return idAbilita;
 	}
 
 	public void setCodice(int codiceAbilita) {
-		this.codiceAbilita = codiceAbilita;
+		this.idAbilita = codiceAbilita;
 	}
 
 	public String getNome() {

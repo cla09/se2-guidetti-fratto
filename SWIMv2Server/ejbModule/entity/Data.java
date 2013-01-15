@@ -2,7 +2,6 @@ package entity;
 
 import java.io.Serializable;
 import java.util.GregorianCalendar;
-
 import javax.persistence.*;
 
 
@@ -10,15 +9,10 @@ import javax.persistence.*;
 @Table(name = "data_completa")
 public class Data implements Serializable{
 
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int idData;
-	
+	private static final long serialVersionUID = 1L;	
 
-	@Column(name = "timestamp", unique = true, nullable = false)
+	@Id
+	@Column(name = "timestamp")
 	private long timestamp;	
 	
 	@Column(name = "anno", nullable = false)
@@ -115,14 +109,6 @@ public class Data implements Serializable{
 
 	public void setSecondo(int secondo) {
 		this.secondo = secondo;
-	}
-
-	public int getIdData() {
-		return idData;
-	}
-
-	public void setIdData(int idData) {
-		this.idData = idData;
 	}
 
 	/*
