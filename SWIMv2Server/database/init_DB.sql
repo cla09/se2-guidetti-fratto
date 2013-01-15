@@ -22,7 +22,7 @@ create table profilo (
 	email varchar(255)  not null,
 	nome varchar(20) not null,
 	cognome varchar(20) not null,
-	avatar varchar(20),
+	avatar varchar(255),
 	citta varchar(50),
 	sesso enum('Maschio', 'Femmina'),
 	anno_nascita int unsigned,
@@ -34,7 +34,7 @@ create table profilo (
 create table abilita (
 	id int unsigned auto_increment,
 	nome varchar(20) not null, 
-	icona varchar(20),
+	icona varchar(255),
 	descrizione varchar(140) not null,
 	primary key (id)
 );

@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entity.Abilita;
-import session.GestoreDichiarazioneLocal;
+import session.GestoreDichiarazioneRemote;
 
 /**
  * Servlet implementation class TestSingoliMetodiGestoreDichiarazione
@@ -36,7 +37,7 @@ public class TestSingoliMetodiGestoreDichiarazione extends HttpServlet {
 			Context ctx = getInitialContext();
 		
 			
-			GestoreDichiarazioneLocal gestoreDichiarazioneLocal = (GestoreDichiarazioneLocal) ctx.lookup("GestoreDichiarazione/local");
+			GestoreDichiarazioneRemote gestoreDichiarazioneRemoto = (GestoreDichiarazioneRemote) ctx.lookup("GestoreDichiarazioneJNDI");
 			
 			System.out.println("****** sono nella servlet--- collegamento stabilito **********");
 			
@@ -45,7 +46,11 @@ public class TestSingoliMetodiGestoreDichiarazione extends HttpServlet {
 			 * 
 			 * test
 			 */
-
+			List<Integer> idAbilita = new ArrayList<Integer>();
+			idAbilita.add(1);
+			
+			
+			
 			/*
 			 * METODO getAbilitaDichiarate
 			 * 
@@ -58,7 +63,7 @@ public class TestSingoliMetodiGestoreDichiarazione extends HttpServlet {
 
 			//test1
 			nickname = "cla09";		
-			abilitaDichiarate = gestoreDichiarazioneLocal.recuperaAbilitaDichiarate(nickname);
+			abilitaDichiarate = gestoreDichiarazioneRemoto.recuperaAbilitaDichiarate(nickname);
 			System.out.println("il numero di abilità dichiarate: " + abilitaDichiarate.size());
 			if(abilitaDichiarate != null){
 				System.out.println("lo user " + nickname + " ha dichiarato le seguenti abilità:");
@@ -69,14 +74,15 @@ public class TestSingoliMetodiGestoreDichiarazione extends HttpServlet {
 			else{
 				System.out.println("lo user non ha dichiarato alcuna abilita");
 			}
-
+			*/
+		
 		}
 		catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		*/
+		
 	}
 
 	/**
