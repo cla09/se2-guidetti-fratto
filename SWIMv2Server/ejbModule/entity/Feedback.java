@@ -23,7 +23,7 @@ public class Feedback implements Serializable{
 	@Column(name = "id")
 	private int id;
     
-    @OneToOne(mappedBy = "feedback")	
+    @OneToOne
     private Aiuto aiuto;
             
 	@Column(name = "valutazione_numerica", nullable = false)

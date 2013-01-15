@@ -38,7 +38,7 @@ public class Aiuto implements Serializable{
 	private Data momentoAccettazioneAiuto;
 
 	
-	@OneToOne(cascade = CascadeType.REMOVE)		//se elimino un aiuto il suo feedback deve essere eliminato
+	@OneToOne(mappedBy = "aiuto", cascade = CascadeType.REMOVE)		//se elimino un aiuto il suo feedback deve essere eliminato
 	private Feedback feedback;
 	
 	
