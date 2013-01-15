@@ -40,10 +40,12 @@
 										while(request.getAttribute("abilita" + i) != null) {
 											Abilita abilita = (Abilita) request.getAttribute("abilita" + i);
 									%>
+											<div id="">
 											<img src="<%= abilita.getIcona() %>">
 											<input name="abilitaScelte" type="checkbox" value="<%= abilita.getCodice() %>">
 											<%= abilita.getNome() %>
 											<br>
+											</div>
 									<%
 											i++;
 										}

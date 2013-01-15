@@ -28,7 +28,32 @@ public class GestoreDichiarazione implements GestoreDichiarazioneRemote {
     	super();
     }
 
-
+    @Override
+    @SuppressWarnings("unchecked")
+	public boolean removeAbilitaDichiarate(String nickname) {
+		List<Dichiarazione>	dichiarazioniDaRimuovere = new ArrayList<Dichiarazione>();
+		User user = gestoreDB.find(User.class, nickname);
+		Query query;
+		query = gestoreDB.createQuery(
+				"SELECT d " +
+				"FROM Dichiarazione d " +
+				"WHERE d.userDichiarante = :user");
+		query.setParameter("user", user);
+		dichiarazioniDaRimuovere = (List<Dichiarazione>) query.getResultList();
+		if(dichiarazioniDaRimuovere.isEmpty()) {
+			return true;
+		}
+		for(Dichiarazione dichiarazione : dichiarazioniDaRimuovere) {
+			try {
+				gestoreDB.remove(dichiarazione);
+			} catch (Exception e) {
+				System.out.println("Errore nella rimozione di una dichiarazione");
+				return false;
+			}
+		}
+		return true;
+    }
+    
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean setAbilitaDichiarate(String nickname, List<Integer> idAbilita) {

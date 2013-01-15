@@ -7,6 +7,8 @@ import entity.Abilita;
 @Remote
 public interface GestoreDichiarazioneRemote {
 	
+	boolean removeAbilitaDichiarate(String nickname);
+	
 	/**
 	 * Il metodo si occupa di settare (modificare) l'insieme delle abilità dichiarate di uno user
 	 *  
