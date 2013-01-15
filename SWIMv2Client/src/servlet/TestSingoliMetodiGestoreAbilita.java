@@ -121,7 +121,7 @@ public class TestSingoliMetodiGestoreAbilita extends HttpServlet {
 				System.out.println("lo user non ha dichiarato alcuna abilita");
 			}
 			
-			*/
+			*/ 
 		}
 		catch (Exception e) {
 			// TODO Auto-generated catch block
