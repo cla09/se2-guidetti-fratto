@@ -60,15 +60,6 @@ public class GestoreDichiarazione implements GestoreDichiarazioneRemote {
 		}
 		userDaSettare.setDichiarazioni(dichiarazioniDaSettare);
 		try {
-			//stampo le dichiarazioni dello user
-			List<Dichiarazione> dichia = userDaSettare.getDichiarazioni();
-			
-			for(Dichiarazione d: dichia){
-				System.out.println("dichiarazione: " + d.getAbilitaDichiarata().getNome());
-			}
-			
-			List<Dichiarazione> dichiarazioneUserOld = userDaSettare.getDichiarazioni();
-						
 			gestoreDB.merge(userDaSettare);
 		} catch (Exception e) {
 			System.out.println("errore nell'aggiornamento nel DB");
