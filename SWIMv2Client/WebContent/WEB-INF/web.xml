@@ -11,86 +11,6 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>TestSingoliMetodiGestorePropostaAbilita</display-name>
-    <servlet-name>TestSingoliMetodiGestorePropostaAbilita</servlet-name>
-    <servlet-class>servlet.TestSingoliMetodiGestorePropostaAbilita</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>TestSingoliMetodiGestorePropostaAbilita</servlet-name>
-    <url-pattern>/TestSingoliMetodiGestorePropostaAbilita</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>TestSingoliMetodiGestoreAmicizia</display-name>
-    <servlet-name>TestSingoliMetodiGestoreAmicizia</servlet-name>
-    <servlet-class>servlet.TestSingoliMetodiGestoreAmicizia</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>TestSingoliMetodiGestoreAmicizia</servlet-name>
-    <url-pattern>/TestSingoliMetodiGestoreAmicizia</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>TestSingoliMetodiGestoreAiuto</display-name>
-    <servlet-name>TestSingoliMetodiGestoreAiuto</servlet-name>
-    <servlet-class>servlet.TestSingoliMetodiGestoreAiuto</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>TestSingoliMetodiGestoreAiuto</servlet-name>
-    <url-pattern>/TestSingoliMetodiGestoreAiuto</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>TestSingoliMetodiGestoreProfilo</display-name>
-    <servlet-name>TestSingoliMetodiGestoreProfilo</servlet-name>
-    <servlet-class>servlet.TestSingoliMetodiGestoreProfilo</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>TestSingoliMetodiGestoreProfilo</servlet-name>
-    <url-pattern>/TestSingoliMetodiGestoreProfilo</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>TestSingoliMetodiGestoreFeedback</display-name>
-    <servlet-name>TestSingoliMetodiGestoreFeedback</servlet-name>
-    <servlet-class>servlet.TestSingoliMetodiGestoreFeedback</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>TestSingoliMetodiGestoreFeedback</servlet-name>
-    <url-pattern>/TestSingoliMetodiGestoreFeedback</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>TestSingoliMetodiGestoreAbilita</display-name>
-    <servlet-name>TestSingoliMetodiGestoreAbilita</servlet-name>
-    <servlet-class>servlet.TestSingoliMetodiGestoreAbilita</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>TestSingoliMetodiGestoreAbilita</servlet-name>
-    <url-pattern>/TestSingoliMetodiGestoreAbilita</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>TestSingoliMetodiGestoreUser</display-name>
-    <servlet-name>TestSingoliMetodiGestoreUser</servlet-name>
-    <servlet-class>servlet.TestSingoliMetodiGestoreUser</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>TestSingoliMetodiGestoreUser</servlet-name>
-    <url-pattern>/TestSingoliMetodiGestoreUser</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>TestSingoliMetodiGestoreAdmin</display-name>
-    <servlet-name>TestSingoliMetodiGestoreAdmin</servlet-name>
-    <servlet-class>servlet.TestSingoliMetodiGestoreAdmin</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>TestSingoliMetodiGestoreAdmin</servlet-name>
-    <url-pattern>/TestSingoliMetodiGestoreAdmin</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>Registrazione</display-name>
     <servlet-name>Registrazione</servlet-name>
     <servlet-class>servlet.Registrazione</servlet-class>
@@ -98,16 +18,6 @@
   <servlet-mapping>
     <servlet-name>Registrazione</servlet-name>
     <url-pattern>/Registrazione</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>TestSingoliMetodiGestoreDichiarazione</display-name>
-    <servlet-name>TestSingoliMetodiGestoreDichiarazione</servlet-name>
-    <servlet-class>servlet.TestSingoliMetodiGestoreDichiarazione</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>TestSingoliMetodiGestoreDichiarazione</servlet-name>
-    <url-pattern>/TestSingoliMetodiGestoreDichiarazione</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
