@@ -106,12 +106,9 @@ public class GestoreDichiarazione implements GestoreDichiarazioneRemote {
 			}
 		}
 		for(Dichiarazione dichiarazione: dichiarazioniDaSettare) {
-			try {
+			
 				gestoreDB.persist(dichiarazione);				
-			} catch(Exception e) {
-				System.out.println("Errore nell'inserimento di una dichiarazione");
-				return false;				
-			}
+				gestoreDB.flush();
 		}
 		return true;
 	}
