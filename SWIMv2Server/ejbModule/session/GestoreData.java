@@ -20,27 +20,27 @@ public class GestoreData {
 	
     //da verifica sto codice morto.........perchè?????????????
 	public Data creaData(){
-		
+		Data dataDaCreare;
     	GregorianCalendar dataAttuale = new GregorianCalendar();
     	long timestamp = dataAttuale.getTimeInMillis();
     	System.out.println("timestamp: " + timestamp);
 
-    	Data data = gestoreDB.find(Data.class, timestamp);
-    	System.out.println("data recuperata " + data.getTimestamp());
+    	dataDaCreare = gestoreDB.find(Data.class, timestamp);
+    	System.out.println("data recuperata " + dataDaCreare.getTimestamp());
     	
-    	if(data == null){
+    	if(dataDaCreare == null){
     		System.out.println("creo una nuoca data");
-    		data.setTimestamp( timestamp  );
-    		data.setAnno( dataAttuale.get(GregorianCalendar.YEAR) );
-    		data.setMese( dataAttuale.get(GregorianCalendar.MONTH) + 1 );
-    		data.setGiorno( dataAttuale.get(GregorianCalendar.DATE) );
-    		data.setOra( dataAttuale.get(GregorianCalendar.HOUR_OF_DAY) );
-    		data.setMinuto( dataAttuale.get(GregorianCalendar.MINUTE) );
-    		data.setSecondo( dataAttuale.get(GregorianCalendar.SECOND) );
+    		dataDaCreare.setTimestamp( timestamp  );
+    		dataDaCreare.setAnno( dataAttuale.get(GregorianCalendar.YEAR) );
+    		dataDaCreare.setMese( dataAttuale.get(GregorianCalendar.MONTH) + 1 );
+    		dataDaCreare.setGiorno( dataAttuale.get(GregorianCalendar.DATE) );
+    		dataDaCreare.setOra( dataAttuale.get(GregorianCalendar.HOUR_OF_DAY) );
+    		dataDaCreare.setMinuto( dataAttuale.get(GregorianCalendar.MINUTE) );
+    		dataDaCreare.setSecondo( dataAttuale.get(GregorianCalendar.SECOND) );
 
     		try{
-    			gestoreDB.persist(data);
-    			return data;
+    			gestoreDB.persist(dataDaCreare);
+    			return dataDaCreare;
     		}
     		catch (Exception e) {
     			System.out.println("errore inserimento nel DB");
@@ -48,7 +48,7 @@ public class GestoreData {
     		}
     	}
     	else{
-    		return data;
+    		return dataDaCreare;
     	}
 	}
 
