@@ -37,20 +37,22 @@ public class CompletamentoRegistrazione extends HttpServlet {
 			//GestoreUserRemote gestoreUser = (GestoreUserRemote) context.lookup("GestoreUserJNDI");
 			GestoreDichiarazioneRemote gestoreDichiarazione = (GestoreDichiarazioneRemote) context.lookup("GestoreDichiarazioneJNDI");
 			String nickname = (String) request.getAttribute("nickname");
-			String[] abilitaScelte = request.getParameterValues("abilitaScelte");
+			String[] abilitaScelte = request.getParameterValues("abilitaScelte");			
 			List<Integer> idAbilita = new ArrayList<Integer>();
 			Messaggio messaggio = new Messaggio(TipoMessaggio.CONFERMA, Comunicazione.REGISTRAZIONE_COMPLETATA);
 			request.setAttribute("messaggio", messaggio);
 			if(abilitaScelte != null) {
 				//l'utente ha scelta almeno un'abilita
-				for(int i = 0; i < abilitaScelte.length; i++) {
+				for(String abilitaScelta: abilitaScelte) {
 					try {
-						System.out.println(abilitaScelte[i]);
-						int id = Integer.parseInt(abilitaScelte[i]);
-						idAbilita.add(id);
+						int id = Integer.parseInt(abilitaScelta);
+						idAbilita.add(new Integer(id));
 					} catch (NumberFormatException numberFormatE) {
 						numberFormatE.printStackTrace();
 					}
+				}
+				for(Integer i: idAbilita) {
+					System.out.println(i.intValue());
 				}
 				gestoreDichiarazione.setAbilitaDichiarate(nickname, idAbilita);
 			}

@@ -65,7 +65,8 @@ public class GestoreDichiarazione implements GestoreDichiarazioneRemote {
 		//recupero le abilità associate agli id passati come parametro e creo gli oggetti Dichiarazione corrispondenti 
 		
 		for (Integer id: idAbilita) {
-			Abilita abilitaDaSettare = gestoreDB.find(Abilita.class, id);
+			Abilita abilitaDaSettare = gestoreDB.find(Abilita.class, id.intValue());
+			System.out.println(abilitaDaSettare.getNome());
 			query = gestoreDB.createQuery(
 					"SELECT d " +
 					"FROM Dichiarazione d " +

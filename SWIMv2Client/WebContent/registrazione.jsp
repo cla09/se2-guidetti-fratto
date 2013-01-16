@@ -23,7 +23,7 @@
 						<div id="titoloBox">
 							<center>Completa la registrazione</center>
 						</div>
-						<form action="CompletamentoRegistrazione" method="post" enctype="multipart/form-data">
+						<form action="CompletamentoRegistrazione" method="post">
 							<div id="informazioniBox">
 								<%
 									String nickname = (String) request.getAttribute("nickname");
@@ -51,6 +51,7 @@
 													<div id="iconaAbilita">
 														<img src="<%= abilita.getIcona() %>">
 													</div>
+													</input>
 												</div>
 											</div>
 									<%
