@@ -12,11 +12,12 @@ public interface GestorePropostaAbilitaRemote {
 	/**
 	 * Il metodo si occupa di inserire nel database una proposta di nuova abilità
 	 * 
-	 * @param nickUserProponente	nickname dello user proponente
+	 * @param nicknameUserProponente	nickname dello user proponente
 	 * @param nomeAbilitaProposta	nome dell'abilità proposta
 	 * @param descrizioneAbilitaProposta	descrizione dell'abilità proposta
+	 * @return TODO
 	 */
-	void inviaProposta(String nickUserProponente, String nomeAbilitaProposta, String descrizioneAbilitaProposta);
+	boolean inviaProposta(String nicknameUserProponente, String nomeAbilitaProposta, String descrizioneAbilitaProposta);
 	
 	/**
 	 * Il metodo si occupa di recuperare tutte le proposte di abilità presenti nel database che sono marcate come "nonVisionate"
