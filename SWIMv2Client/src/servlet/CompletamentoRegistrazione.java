@@ -36,7 +36,7 @@ public class CompletamentoRegistrazione extends HttpServlet {
 			Context context = new InitialContext();
 			//GestoreUserRemote gestoreUser = (GestoreUserRemote) context.lookup("GestoreUserJNDI");
 			GestoreDichiarazioneRemote gestoreDichiarazione = (GestoreDichiarazioneRemote) context.lookup("GestoreDichiarazioneJNDI");
-			String nickname = (String) request.getAttribute("nickname");
+			String nickname = (String) request.getParameter("nickname");
 			String[] abilitaScelte = request.getParameterValues("abilitaScelte");			
 			List<Integer> idAbilita = new ArrayList<Integer>();
 			Messaggio messaggio = new Messaggio(TipoMessaggio.CONFERMA, Comunicazione.REGISTRAZIONE_COMPLETATA);
@@ -54,6 +54,7 @@ public class CompletamentoRegistrazione extends HttpServlet {
 				for(Integer i: idAbilita) {
 					System.out.println(i.intValue());
 				}
+				System.out.println("nickname in servlet: " + nickname);
 				gestoreDichiarazione.setAbilitaDichiarate(nickname, idAbilita);
 			}
 			dispatcher = request.getRequestDispatcher("index.jsp");

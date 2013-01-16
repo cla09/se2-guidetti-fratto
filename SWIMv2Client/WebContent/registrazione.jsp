@@ -27,7 +27,13 @@
 							<div id="informazioniBox">
 								<%
 									String nickname = (String) request.getAttribute("nickname");
-									request.setAttribute("nickname", nickname);
+									if(nickname != null) {
+								%>
+									<input name="nickname" type="hidden" value="<%= nickname %>">
+								<%
+									} /*else {
+										redirigo alla index
+									}*/
 								%>
 								<p>
 									<label for="avatar">Avatar:</label>
